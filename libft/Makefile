@@ -6,7 +6,7 @@
 #    By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/09 01:09:18 by dokwak            #+#    #+#              #
-#    Updated: 2021/11/18 18:00:12 by dokwak           ###   ########.fr        #
+#    Updated: 2021/11/21 23:58:37 by dokwak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,22 +34,22 @@
 #LDFLAGS=<링크 옵션>
 #LDLIBS=<링크 라이브러리 목록>
 #OBJS=<Object 파일 목록>
-#TARGET=<빌드 대상 이름>
+#NAME=<빌드 대상 이름>
 # 
-#all: $(TARGET)
+#all: $(NAME)
 #	 
 #clean:
 #	    rm -f *.o
-#		    rm -f $(TARGET)
+#		    rm -f $(NAME)
 #			 
-#$(TARGET): $(OBJS)
+#$(NAME): $(OBJS)
 #	$(CC) -o $@ $(OBJS)
 
-CC = GCC 
-CFLAGS = -Wall -Wextra Werror
-AR = ar csr
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar rcs
 
-TARGET = libft.a
+NAME = libft.a
 MANDATORY_PART = 	ft_isalpha \
 					ft_isdigit \
 					ft_isalnum \
@@ -59,7 +59,7 @@ MANDATORY_PART = 	ft_isalpha \
 					ft_memset \
 					ft_bzero \
 					ft_memcpy \
-					ft_memmove
+					ft_memmove \
 					ft_strlcpy \
 					ft_strlcat \
 					ft_toupper \
@@ -95,35 +95,37 @@ MANDATORY_PART = 	ft_isalpha \
 #				ft_lstiter \
 #				ft_lstmap 
 
-SRCS_DIR = ./
+SRCS_DIR = ./srcs/
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(MANDATORY_PART)))
+#SRCS = $(addsuffix .c, $(MANDATORY_PART))
 #SRCS_B = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(BONUS_PART)))
 
-OBJS_DIR = ./
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(MANDATORY_PART)))
+OBJS_DIR = ./includes/
+OBJS = $(addprefix $(SRCS_DIR), $(addsuffix .o, $(MANDATORY_PART)))
+#OBJS = $(addsuffix .o, $(MANDATORY_PART))
 #OBJS_B = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(BONUS_PART)))
 
 
 # compile and making object files
 # %.o (%.c) is similar with *.o (*.c)
 .c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $< -I $(OBJS_DIR)
 
 # linking
-all: $(TARGET)
+$(NAME): $(OBJS)
+	$(AR) $@ $^
 
-$(TARGET): $(OBJS)
-	$(AR) $@ $^	
+all: $(NAME)
 
 #bonus: $(OBJS_B)
-	$(AR) $(NAME) $^
+#$(AR) $(NAME) $^
 
 clean :
 	rm -f $(OBJS)
 
 fclean : clean
-	rm -f $(TARGET)
+	rm -f $(NAME)
 
-re : fclean all
+re : clean all
 
-.PHONY : all bonus clean fclean re
+.PHONY : all clean fclean re

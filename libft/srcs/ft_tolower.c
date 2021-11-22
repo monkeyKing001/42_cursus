@@ -6,15 +6,15 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 16:58:55 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/18 17:06:29 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/11/20 19:05:38 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	tolower(int c)
+int	ft_tolower(int c)
 {
 	if ('A' <= c && c <= 'Z')
-		return (c + ('A' - 'a'));
+		return (c + ('a' - 'A'));
 	else
 		return (c);
 }

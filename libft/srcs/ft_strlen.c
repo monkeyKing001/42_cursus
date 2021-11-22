@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 01:17:36 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/18 13:27:04 by dokwak           ###   ########.fr       */
+/*   Created: 2021/11/18 13:22:00 by dokwak            #+#    #+#             */
+/*   Updated: 2021/11/20 18:40:53 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+
+size_t	ft_strlen(char *str)
 {
-	if (0 <= c && c <= 127)
-		return (c);
-	return (0);
+	size_t	ret_size;
+
+	ret_size = 0;
+	while (str[ret_size])
+		ret_size++;
+	return (ret_size);
 }
