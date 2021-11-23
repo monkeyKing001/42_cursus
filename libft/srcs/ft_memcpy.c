@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:41:00 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/21 23:59:08 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/11/23 16:51:55 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	if (dest != src && n != 0)
 	{
-		while (i < n && ((unsigned char *)src)[i])
+		while (i < n)
 		{
 			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
 			i++;
