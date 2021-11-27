@@ -6,12 +6,12 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 17:22:25 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/18 17:51:00 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/11/28 02:17:55 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{

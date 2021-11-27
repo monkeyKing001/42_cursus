@@ -6,12 +6,12 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 17:35:11 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/18 17:49:18 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/11/28 02:17:34 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	size_t	len;
 
