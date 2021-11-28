@@ -6,7 +6,7 @@
 #    By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/09 01:09:18 by dokwak            #+#    #+#              #
-#    Updated: 2021/11/21 23:58:37 by dokwak           ###   ########.fr        #
+#    Updated: 2021/11/28 03:08:07 by dokwak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,10 +69,10 @@ MANDATORY_PART = 	ft_isalpha \
 					ft_strncmp \
 					ft_memchr \
 					ft_memcmp \
-#					ft_strnstr \
-#					ft_atoi \
-#					ft_calloc \
-#					ft_strdup \
+					ft_strnstr \
+					ft_atoi \
+					ft_calloc \
+					ft_strdup \
 #					ft_substr \
 #					ft_strjoin \
 #					ft_strtrim \

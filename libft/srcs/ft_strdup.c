@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 13:35:37 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/28 02:45:11 by dokwak           ###   ########.fr       */
+/*   Created: 2021/11/28 03:28:40 by dokwak            #+#    #+#             */
+/*   Updated: 2021/11/28 23:33:30 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
+char	*ft_strdup(const char *s)
 {
-	size_t	i;
+	size_t	len;
+	char	*dup_char;
 
-	i = 0;
-	if (!src)
-		return (0);
-	if (dstsize)
+	len = ft_strlen((char *)s);
+	if (len == 0)
+		return (NULL);
+	dup_char = malloc(sizeof(char) * (len + 1));
+	if (dup_char == NULL)
 	{
-		while (src[i] && i + 1 < dstsize)
-		{
-			dest[i] = src[i];
-			++i;
-		}
-		dest[i] = 0;
+		free(dup_char);
+		return (NULL);
 	}
-	while (src[i])
-		++i;
-	return (i);
+	len = -1;
+	while (s[++len])
+	{
+		dup_char[len] = s[len];
+	}
+	dup_char[len] = 0;
+	return (dup_char);
 }

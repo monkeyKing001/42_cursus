@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 13:35:37 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/28 02:45:11 by dokwak           ###   ########.fr       */
+/*   Created: 2021/11/28 03:15:22 by dokwak            #+#    #+#             */
+/*   Updated: 2021/11/28 23:25:01 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
+int	ft_atoi(const char *s)
 {
-	size_t	i;
+	int	ret;
+	int	sig;
 
-	i = 0;
-	if (!src)
-		return (0);
-	if (dstsize)
+	ret = 0;
+	sig = 1;
+	while (*s == ' ' || *s == '\r' || *s == '\t'
+		|| *s == '\f' || *s == '\v' || '\v')
+		s++;
+	if (*s == '-' || *s == '+')
 	{
-		while (src[i] && i + 1 < dstsize)
-		{
-			dest[i] = src[i];
-			++i;
-		}
-		dest[i] = 0;
+		if (*s == '-')
+			sig = -1;
+		s++;
 	}
-	while (src[i])
-		++i;
-	return (i);
+	while (ft_isdigit(*s))
+	{
+		ret = ret * 10 + ((*s - '0') * sig);
+		s++;
+	}
+	return (ret);
 }
