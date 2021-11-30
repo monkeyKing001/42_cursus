@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:13:22 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/28 03:20:48 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/11/30 21:58:41 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -39,6 +39,9 @@ char	*ft_strnstr(const char *s1, const char *set, size_t n);
 int		ft_atoi(const char *s);
 void	*ft_calloc(size_t cnt, size_t n);
 char	*ft_strdup(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 
 typedef struct s_list
 {
