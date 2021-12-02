@@ -1,9 +1,9 @@
 = Host-specific information ====================================================
 $> hostname; uname -msr
-c7r3s3.42seoul.kr
+c9r5s5.42seoul.kr
 Darwin 19.6.0 x86_64
 $> date
-Wed Dec  1 17:25:20 KST 2021
+Thu Dec  2 18:00:21 KST 2021
 $> gcc --version
 Apple clang version 12.0.0 (clang-1200.0.32.28)
 Target: x86_64-apple-darwin19.6.0
@@ -20,7 +20,7 @@ $> norminette libft.h | grep -E '(Error|Warning)'
 
 = Compiling libft ==============================================================
 $> make re
-rm -f ./srcs/ft_isalpha.o ./srcs/ft_isdigit.o ./srcs/ft_isalnum.o ./srcs/ft_isascii.o ./srcs/ft_isprint.o ./srcs/ft_strlen.o ./srcs/ft_memset.o ./srcs/ft_bzero.o ./srcs/ft_memcpy.o ./srcs/ft_memmove.o ./srcs/ft_strlcpy.o ./srcs/ft_strlcat.o ./srcs/ft_toupper.o ./srcs/ft_tolower.o ./srcs/ft_strchr.o ./srcs/ft_strrchr.o ./srcs/ft_strncmp.o ./srcs/ft_memchr.o ./srcs/ft_memcmp.o ./srcs/ft_strnstr.o ./srcs/ft_atoi.o ./srcs/ft_calloc.o ./srcs/ft_strdup.o ./srcs/ft_substr.o ./srcs/ft_strjoin.o ./srcs/ft_strtrim.o
+rm -f ./srcs/ft_isalpha.o ./srcs/ft_isdigit.o ./srcs/ft_isalnum.o ./srcs/ft_isascii.o ./srcs/ft_isprint.o ./srcs/ft_strlen.o ./srcs/ft_memset.o ./srcs/ft_bzero.o ./srcs/ft_memcpy.o ./srcs/ft_memmove.o ./srcs/ft_strlcpy.o ./srcs/ft_strlcat.o ./srcs/ft_toupper.o ./srcs/ft_tolower.o ./srcs/ft_strchr.o ./srcs/ft_strrchr.o ./srcs/ft_strncmp.o ./srcs/ft_memchr.o ./srcs/ft_memcmp.o ./srcs/ft_strnstr.o ./srcs/ft_atoi.o ./srcs/ft_calloc.o ./srcs/ft_strdup.o ./srcs/ft_substr.o ./srcs/ft_strjoin.o ./srcs/ft_strtrim.o ./srcs/ft_split.o ./srcs/ft_itoa.o ./srcs/ft_strmapi.o
 gcc -Wall -Wextra -Werror -c -o srcs/ft_isalpha.o srcs/ft_isalpha.c -I ./includes/
 gcc -Wall -Wextra -Werror -c -o srcs/ft_isdigit.o srcs/ft_isdigit.c -I ./includes/
 gcc -Wall -Wextra -Werror -c -o srcs/ft_isalnum.o srcs/ft_isalnum.c -I ./includes/
@@ -47,13 +47,18 @@ gcc -Wall -Wextra -Werror -c -o srcs/ft_strdup.o srcs/ft_strdup.c -I ./includes/
 gcc -Wall -Wextra -Werror -c -o srcs/ft_substr.o srcs/ft_substr.c -I ./includes/
 gcc -Wall -Wextra -Werror -c -o srcs/ft_strjoin.o srcs/ft_strjoin.c -I ./includes/
 gcc -Wall -Wextra -Werror -c -o srcs/ft_strtrim.o srcs/ft_strtrim.c -I ./includes/
-ar rcs libft.a srcs/ft_isalpha.o srcs/ft_isdigit.o srcs/ft_isalnum.o srcs/ft_isascii.o srcs/ft_isprint.o srcs/ft_strlen.o srcs/ft_memset.o srcs/ft_bzero.o srcs/ft_memcpy.o srcs/ft_memmove.o srcs/ft_strlcpy.o srcs/ft_strlcat.o srcs/ft_toupper.o srcs/ft_tolower.o srcs/ft_strchr.o srcs/ft_strrchr.o srcs/ft_strncmp.o srcs/ft_memchr.o srcs/ft_memcmp.o srcs/ft_strnstr.o srcs/ft_atoi.o srcs/ft_calloc.o srcs/ft_strdup.o srcs/ft_substr.o srcs/ft_strjoin.o srcs/ft_strtrim.o
+gcc -Wall -Wextra -Werror -c -o srcs/ft_split.o srcs/ft_split.c -I ./includes/
+gcc -Wall -Wextra -Werror -c -o srcs/ft_itoa.o srcs/ft_itoa.c -I ./includes/
+gcc -Wall -Wextra -Werror -c -o srcs/ft_strmapi.o srcs/ft_strmapi.c -I ./includes/
+ar rcs libft.a srcs/ft_isalpha.o srcs/ft_isdigit.o srcs/ft_isalnum.o srcs/ft_isascii.o srcs/ft_isprint.o srcs/ft_strlen.o srcs/ft_memset.o srcs/ft_bzero.o srcs/ft_memcpy.o srcs/ft_memmove.o srcs/ft_strlcpy.o srcs/ft_strlcat.o srcs/ft_toupper.o srcs/ft_tolower.o srcs/ft_strchr.o srcs/ft_strrchr.o srcs/ft_strncmp.o srcs/ft_memchr.o srcs/ft_memcmp.o srcs/ft_strnstr.o srcs/ft_atoi.o srcs/ft_calloc.o srcs/ft_strdup.o srcs/ft_substr.o srcs/ft_strjoin.o srcs/ft_strtrim.o srcs/ft_split.o srcs/ft_itoa.o srcs/ft_strmapi.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib: file: libft.a(ft_itoa.o) has no symbols
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib: file: libft.a(ft_strmapi.o) has no symbols
 
 $> make bonus
 make: *** No rule to make target `bonus'.  Stop.
 
 $> ls -la libft.a
--rw-r--r--  1 dokwak  2021_seoul  23104 Dec  1 17:25 /Users/dokwak/42_cursus/libft/war_machine/dirlibft/libft.a
+-rw-r--r--  1 dokwak  2021_seoul  25328 Dec  2 18:00 /Users/dokwak/42_cursus/libft/war_machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
@@ -953,7 +958,11 @@ Diff OK :D
 $> norminette ft_strmapi.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strmapi.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/Users/dokwak/42_cursus/libft/war_machine/dirlibft/srcs/ft_strmapi.c'
+Undefined symbols for architecture x86_64:
+  "_ft_strmapi", referenced from:
+      _main in main-4e86b8.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 = ft_substr.c ==================================================================
 $> norminette ft_substr.c | grep -E '(Error|Warning)'
@@ -982,13 +991,8 @@ Diff OK :D
 = Test 5 ===================================================
 $> ./user_exe 05
 $> diff -U 3 user_output_test05 test05.output
---- /Users/dokwak/42_cursus/libft/war_machine/tests/Part2_functions/ft_substr/user_output_test05	2021-12-01 17:25:38.000000000 +0900$
-+++ /Users/dokwak/42_cursus/libft/war_machine/tests/Part2_functions/ft_substr/test05.output	2021-12-01 10:33:28.000000000 +0900$
-@@ -1 +0,0 @@$
--Ы\щию^?$
-\ No newline at end of file$
 
-Diff KO :(
+Diff OK :D
 
 = ft_strjoin.c =================================================================
 $> norminette ft_strjoin.c | grep -E '(Error|Warning)'
@@ -1042,25 +1046,41 @@ Diff OK :D
 = Test 5 ===================================================
 $> ./user_exe 05
 $> diff -U 3 user_output_test05 test05.output
---- /Users/dokwak/42_cursus/libft/war_machine/tests/Part2_functions/ft_strtrim/user_output_test05	2021-12-01 17:25:39.000000000 +0900$
-+++ /Users/dokwak/42_cursus/libft/war_machine/tests/Part2_functions/ft_strtrim/test05.output	2021-12-01 10:33:28.000000000 +0900$
-@@ -1 +0,0 @@$
--NULL$
-\ No newline at end of file$
 
-Diff KO :(
+Diff OK :D
 
 = ft_split.c ===================================================================
 $> norminette ft_split.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_split.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/Users/dokwak/42_cursus/libft/war_machine/dirlibft/srcs/ft_split.c'
+= Test 1 ===================================================
+$> ./user_exe 01
+Command './user_exe 01' got killed by an Abort
+= Test 2 ===================================================
+$> ./user_exe 02
+Command './user_exe 02' got killed by an Abort
+= Test 3 ===================================================
+$> ./user_exe 03
+Command './user_exe 03' got killed by an Abort
+= Test 4 ===================================================
+$> ./user_exe 04
+Command './user_exe 04' got killed by an Abort
+= Test 5 ===================================================
+$> ./user_exe 05
+Command './user_exe 05' got killed by an Abort
+= Test 6 ===================================================
+$> ./user_exe 06
+Command './user_exe 06' got killed by an Abort
 
 = ft_itoa.c ====================================================================
 $> norminette ft_itoa.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_itoa.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/Users/dokwak/42_cursus/libft/war_machine/dirlibft/srcs/ft_itoa.c'
+Undefined symbols for architecture x86_64:
+  "_ft_itoa", referenced from:
+      _main in main-82296b.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 = ft_striteri.c ================================================================
 $> norminette ft_striteri.c | grep -E '(Error|Warning)'

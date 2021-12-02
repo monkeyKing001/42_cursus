@@ -6,7 +6,7 @@
 #    By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/09 01:09:18 by dokwak            #+#    #+#              #
-#    Updated: 2021/11/30 21:56:49 by dokwak           ###   ########.fr        #
+#    Updated: 2021/12/02 13:49:18 by dokwak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,9 +76,9 @@ MANDATORY_PART = 	ft_isalpha \
 					ft_substr \
 					ft_strjoin \
 					ft_strtrim \
-#					ft_split \
-#					ft_itoa \
-#					ft_strmapi \
+					ft_split \
+					ft_itoa \
+					ft_strmapi \
 #					ft_striteri \
 #					ft_putchar_fd \
 #					ft_putstr_fd \
