@@ -6,7 +6,7 @@
 #    By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/09 01:09:18 by dokwak            #+#    #+#              #
-#    Updated: 2021/12/02 13:49:18 by dokwak           ###   ########.fr        #
+#    Updated: 2021/12/03 12:23:23 by dokwak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,12 +79,12 @@ MANDATORY_PART = 	ft_isalpha \
 					ft_split \
 					ft_itoa \
 					ft_strmapi \
-#					ft_striteri \
-#					ft_putchar_fd \
-#					ft_putstr_fd \
-#					ft_putendl_fd \
-#					ft_putnbr_fd \
-#
+					ft_striteri \
+					ft_putchar_fd \
+					ft_putstr_fd \
+					ft_putendl_fd \
+					ft_putnbr_fd \
+
 #BONUS_PART = 	ft_lstnew \
 #				ft_lstadd_front \
 #				ft_lstsize \

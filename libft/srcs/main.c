@@ -9,7 +9,7 @@ int	main(void)
 	char	*str;
 	int		num;
 
-	num = -2147483648;
+	num = -1;
 	str = ft_itoa(num);
 	printf("num : %d\n", num);
 	printf("digit_num : %d\n", get_digit_num(num));
