@@ -6,15 +6,15 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 03:15:22 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/29 23:27:10 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/03 18:58:40 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_atoi(const char *s)
 {
-	int	ret;
-	int	sig;
+	long long	ret;
+	int			sig;
 
 	ret = 0;
 	sig = 1;
@@ -29,6 +29,10 @@ int	ft_atoi(const char *s)
 	}
 	while (ft_isdigit(*s))
 	{
+		if (ret >= 922337203685477580 && *s > '7')
+			return (-1);
+		if (ret <= -922337203685477580 && *s > '8')
+			return (0);
 		ret = ret * 10 + ((*s - '0') * sig);
 		s++;
 	}

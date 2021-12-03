@@ -6,15 +6,32 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:44:39 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/03 13:37:35 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/03 18:24:53 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+void	putnbr_rec(long long lln, int fd)
+{
+	char		digit;
+
+	if (lln == 0)
+		return ;
+	putnbr_rec(lln / 10, fd);
+	digit = (lln % 10) + '0';
+	write(fd, &digit, 1);
+}
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*buf;
+	long long	lln;
 
-	buf = ft_itoa(n);
-	ft_putstr_fd(buf, fd);
+	lln = n;
+	if (lln < 0)
+	{
+		lln *= -1;
+		write(fd, "-", 1);
+	}
+	if (lln == 0)
+		write(fd, "0", 1);
+	putnbr_rec(lln, fd);
 }

@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:46:55 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/02 21:09:15 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/03 18:00:07 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -35,6 +35,8 @@ char	**ft_split(char const *s, char c)
 	char const	*s_pnt1;
 	char		**ret_pnt;
 
+	if (!s)
+		return (NULL);
 	ret_pnt = malloc(sizeof(char *) * (count_chnk_num(s, c) + 1));
 	if (ret_pnt == NULL)
 		return (NULL);
