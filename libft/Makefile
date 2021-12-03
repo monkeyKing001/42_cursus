@@ -6,7 +6,7 @@
 #    By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/09 01:09:18 by dokwak            #+#    #+#              #
-#    Updated: 2021/12/03 12:23:23 by dokwak           ###   ########.fr        #
+#    Updated: 2021/12/03 16:31:26 by dokwak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,31 +85,31 @@ MANDATORY_PART = 	ft_isalpha \
 					ft_putendl_fd \
 					ft_putnbr_fd \
 
-#BONUS_PART = 	ft_lstnew \
-#				ft_lstadd_front \
-#				ft_lstsize \
-#				ft_lstlast \
-#				ft_lstadd_back \
-#				ft_lstdelone \
-#				ft_lstclear \
-#				ft_lstiter \
-#				ft_lstmap 
+BONUS_PART = 	ft_lstnew \
+				ft_lstadd_front \
+				ft_lstsize \
+				ft_lstlast \
+				ft_lstadd_back \
+				ft_lstdelone \
+				ft_lstclear \
+				ft_lstiter \
+				ft_lstmap 
 
 SRCS_DIR = ./srcs/
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(MANDATORY_PART)))
+SRCS = $(addsuffix .c, $(MANDATORY_PART))
 #SRCS = $(addsuffix .c, $(MANDATORY_PART))
-#SRCS_B = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(BONUS_PART)))
+SRCS_B = $(addsuffix .c, $(BONUS_PART))
 
 OBJS_DIR = ./includes/
-OBJS = $(addprefix $(SRCS_DIR), $(addsuffix .o, $(MANDATORY_PART)))
+OBJS = $(addsuffix .o, $(MANDATORY_PART))
 #OBJS = $(addsuffix .o, $(MANDATORY_PART))
-#OBJS_B = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(BONUS_PART)))
+OBJS_B = $(addsuffix .o, $(BONUS_PART))
 
 
 # compile and making object files
 # %.o (%.c) is similar with *.o (*.c)
 .c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $< -I $(OBJS_DIR)
+	$(CC) $(CFLAGS) -c -o $@ $< 
 
 # linking
 $(NAME): $(OBJS)
@@ -117,15 +117,15 @@ $(NAME): $(OBJS)
 
 all: $(NAME)
 
-#bonus: $(OBJS_B)
-#$(AR) $(NAME) $^
+bonus: $(OBJS_B)
+	$(AR) $(NAME) $^
 
 clean :
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJS_B)
 
 fclean : clean
 	rm -f $(NAME)
 
 re : clean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re bonus
