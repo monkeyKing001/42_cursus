@@ -6,11 +6,31 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 13:44:39 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/18 13:48:34 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/06 19:36:28 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-
+/*
+** concatenate src to dest	
+** dest = abc ,  src = def 
+** after strlcat(dest, src, 7);
+** dest -> abcdef																
+**
+** case 1)  failed to cat 	
+** 		->	destsize < dest
+**		->	no concatenate
+**		->	return (len(src) + destsize);
+**
+** case 2)  partially failed to cat
+** 		->	destsize < dest + (n of src)		
+**		->	partial concatenate
+**		->	return (len(dest) + len(src));
+**
+** case 3) succeed to cat
+**		->	destsize > dest + (n of src) 
+**		->	fully concatenate
+**		->	return (len(dest) + len(src));
+*/
 size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 {
 	size_t	i;

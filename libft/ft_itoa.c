@@ -6,11 +6,14 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 21:12:03 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/03 11:59:34 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/06 19:54:50 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-
+/*
+** this func gets digit number of n, n cannot be zero(0) 
+** if n is less than 0, allocate one more num for sign '-'
+*/
 int	get_digit_num(int n)
 {
 	int	digit_num;
@@ -25,6 +28,11 @@ int	get_digit_num(int n)
 	}
 	return (digit_num);
 }
+/*
+** div n first to prevent the overflow
+** while condition checks if n is 0 or not  
+** so, if n is 0, we can not get right digit_num.
+*/
 
 void	itoa_rec(int n, int index, char **db_pnt)
 {
@@ -45,6 +53,12 @@ void	itoa_rec(int n, int index, char **db_pnt)
 	pnt[index] = mod + '0';
 	itoa_rec(div, index - 1, db_pnt);
 }
+/*
+** if n == 0, return "0" right away
+** for correct working of itoa_rec
+** allocate digit_num + 1 for last '\0'
+** fillin the pnt[] from last index(remainder)
+*/
 
 char	*ft_itoa(int n)
 {

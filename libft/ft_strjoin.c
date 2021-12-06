@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 22:51:12 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/03 17:50:25 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/06 18:30:53 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(pnt, s2, pnt_size);
 	return (pnt);
 }
+/*
+** s1 =  	abc			
+** s2 =  	fgh		
+** pnt =	[\0.......]	
+**     |				
+** 	   | ->	[abc\0....]	
+**	   |			
+**     | ->	[abcfgh\0]
+*/

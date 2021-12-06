@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 02:18:08 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/30 00:10:12 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/06 18:14:38 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -23,3 +23,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
+/*
+** have to cast (int) c -> (char) c
+*/

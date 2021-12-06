@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:46:55 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/03 18:00:07 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/06 18:29:08 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -28,6 +28,15 @@ long long	count_chnk_num(char const *s, char c)
 	}
 	return (chnk_num);
 }
+/*
+** if fail to allocating memory free every memory allocated before 
+** s = abcde.fghij..klm,  c = '.' 								  
+**     o    v										
+**           o    v   										
+**                 o   										
+**				   	o											
+** s = o, s_pnt1 = v 											
+*/
 
 char	**ft_split(char const *s, char c)
 {
@@ -57,3 +66,8 @@ char	**ft_split(char const *s, char c)
 	ret_pnt[i] = NULL;
 	return (ret_pnt);
 }
+/*
+** s_pnt1 == NULL -> last word
+** s_pnt1 == address -> delimeter point
+** don't forget the last NULL pointer
+*/

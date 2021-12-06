@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 03:28:40 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/02 17:58:45 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/06 18:29:40 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -28,3 +28,7 @@ char	*ft_strdup(const char *s)
 	dup_char[len] = 0;
 	return (dup_char);
 }
+/*
+** if s = "" -> len = 0;
+** return ("\0");
+*/
