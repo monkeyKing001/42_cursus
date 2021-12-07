@@ -6,21 +6,24 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:46:55 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/07 16:45:38 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/07 20:23:42 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-static void	free_all(char **ret_pnt)
+static char	**free_all(char **ret_pnt)
 {
 	long long	i;
 
 	i = 0;
+	if (ret_pnt == NULL)
+		return (NULL);
 	while (ret_pnt[i])
 	{
 		free(ret_pnt[i]);
 		i++;
 	}
 	free(ret_pnt);
+	return (NULL);
 }
 
 static long long	count_chnk_num(char const *s, char c)
@@ -67,7 +70,7 @@ static char	**ft_sub_split(char **ret_pnt, char const *s, char c)
 			else if (s_pnt1 != s)
 				ret_pnt[i] = ft_substr(s, 0, s_pnt1 - s);
 			if (ret_pnt[i] == NULL)
-				free_all(ret_pnt);
+				return (free_all(ret_pnt));
 			i++;
 		}
 		if (s_pnt1 == NULL)

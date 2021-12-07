@@ -1,9 +1,9 @@
 = Host-specific information ====================================================
 $> hostname; uname -msr
-c10r8s9.42seoul.kr
+c8r8s10.42seoul.kr
 Darwin 19.6.0 x86_64
 $> date
-Fri Dec  3 17:07:52 KST 2021
+Tue Dec  7 10:38:42 KST 2021
 $> gcc --version
 Apple clang version 12.0.0 (clang-1200.0.32.28)
 Target: x86_64-apple-darwin19.6.0
@@ -20,7 +20,7 @@ $> norminette libft.h | grep -E '(Error|Warning)'
 
 = Compiling libft ==============================================================
 $> make re
-rm -f ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+rm -f ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o 
 gcc -Wall -Wextra -Werror -c -o ft_isalpha.o ft_isalpha.c 
 gcc -Wall -Wextra -Werror -c -o ft_isdigit.o ft_isdigit.c 
 gcc -Wall -Wextra -Werror -c -o ft_isalnum.o ft_isalnum.c 
@@ -56,21 +56,10 @@ gcc -Wall -Wextra -Werror -c -o ft_putstr_fd.o ft_putstr_fd.c
 gcc -Wall -Wextra -Werror -c -o ft_putendl_fd.o ft_putendl_fd.c 
 gcc -Wall -Wextra -Werror -c -o ft_putnbr_fd.o ft_putnbr_fd.c 
 ar rcs libft.a ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o
-gcc -Wall -Wextra -Werror -c -o ft_lstnew.o ft_lstnew.c 
-gcc -Wall -Wextra -Werror -c -o ft_lstadd_front.o ft_lstadd_front.c 
-gcc -Wall -Wextra -Werror -c -o ft_lstsize.o ft_lstsize.c 
-gcc -Wall -Wextra -Werror -c -o ft_lstlast.o ft_lstlast.c 
-gcc -Wall -Wextra -Werror -c -o ft_lstadd_back.o ft_lstadd_back.c 
-gcc -Wall -Wextra -Werror -c -o ft_lstdelone.o ft_lstdelone.c 
-gcc -Wall -Wextra -Werror -c -o ft_lstclear.o ft_lstclear.c 
-gcc -Wall -Wextra -Werror -c -o ft_lstiter.o ft_lstiter.c 
-gcc -Wall -Wextra -Werror -c -o ft_lstmap.o ft_lstmap.c 
-ar rcs libft.a ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib: file: libft.a(ft_lstiter.o) has no symbols
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib: file: libft.a(ft_lstmap.o) has no symbols
+make[1]: Nothing to be done for `all'.
 
 $> ls -la libft.a
--rw-r--r--  1 dokwak  2021_seoul  37840 Dec  3 17:07 /Users/dokwak/42_cursus/test-libft/tmp_tests_dir/libft.a
+-rw-r--r--  1 dokwak  2021_seoul  32400 Dec  7 10:38 /Users/dokwak/42_cursus/test-libft/tmp_tests_dir/libft.a
 
 = Part1_functions ==============================================================
 
@@ -1282,119 +1271,31 @@ Diff OK :D
 = Bonus_functions ==============================================================
 
 = ft_lstadd_back ===============================================================
-$> norminette ft_lstadd_back.c | grep -E '(Error|Warning)'
-$> clang -Wextra -Wall -Werror /Users/dokwak/42_cursus/test-libft/tests/Bonus_functions/ft_lstadd_back/main.c -L/Users/dokwak/42_cursus/test-libft/tmp_tests_dir -lft -I/Users/dokwak/42_cursus/test-libft/tmp_tests_dir
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
+Nothing turned in
 
 = ft_lstadd_front ==============================================================
-$> norminette ft_lstadd_front.c | grep -E '(Error|Warning)'
-$> clang -Wextra -Wall -Werror /Users/dokwak/42_cursus/test-libft/tests/Bonus_functions/ft_lstadd_front/main.c -L/Users/dokwak/42_cursus/test-libft/tmp_tests_dir -lft -I/Users/dokwak/42_cursus/test-libft/tmp_tests_dir
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
+Nothing turned in
 
 = ft_lstclear ==================================================================
-$> norminette ft_lstclear.c | grep -E '(Error|Warning)'
-$> clang -Wextra -Wall -Werror /Users/dokwak/42_cursus/test-libft/tests/Bonus_functions/ft_lstclear/main.c -L/Users/dokwak/42_cursus/test-libft/tmp_tests_dir -lft -I/Users/dokwak/42_cursus/test-libft/tmp_tests_dir
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
+Nothing turned in
 
 = ft_lstdelone =================================================================
-$> norminette ft_lstdelone.c | grep -E '(Error|Warning)'
-$> clang -Wextra -Wall -Werror /Users/dokwak/42_cursus/test-libft/tests/Bonus_functions/ft_lstdelone/main.c -L/Users/dokwak/42_cursus/test-libft/tmp_tests_dir -lft -I/Users/dokwak/42_cursus/test-libft/tmp_tests_dir
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
+Nothing turned in
 
 = ft_lstiter ===================================================================
-$> norminette ft_lstiter.c | grep -E '(Error|Warning)'
-$> clang -Wextra -Wall -Werror /Users/dokwak/42_cursus/test-libft/tests/Bonus_functions/ft_lstiter/main.c -L/Users/dokwak/42_cursus/test-libft/tmp_tests_dir -lft -I/Users/dokwak/42_cursus/test-libft/tmp_tests_dir
-
-Undefined symbols for architecture x86_64:
-  "_ft_lstiter", referenced from:
-      _main in main-bc18dd.o
-ld: symbol(s) not found for architecture x86_64
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
+Nothing turned in
 
 = ft_lstlast ===================================================================
-$> norminette ft_lstlast.c | grep -E '(Error|Warning)'
-$> clang -Wextra -Wall -Werror /Users/dokwak/42_cursus/test-libft/tests/Bonus_functions/ft_lstlast/main.c -L/Users/dokwak/42_cursus/test-libft/tmp_tests_dir -lft -I/Users/dokwak/42_cursus/test-libft/tmp_tests_dir
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
-= Test 2 ===================================================
-$> ./user_exe 02
-$> diff -U 3 user_output_test02 test02.output
-
-Diff OK :D
+Nothing turned in
 
 = ft_lstmap ====================================================================
-$> norminette ft_lstmap.c | grep -E '(Error|Warning)'
-$> clang -Wextra -Wall -Werror /Users/dokwak/42_cursus/test-libft/tests/Bonus_functions/ft_lstmap/main.c -L/Users/dokwak/42_cursus/test-libft/tmp_tests_dir -lft -I/Users/dokwak/42_cursus/test-libft/tmp_tests_dir
-
-Undefined symbols for architecture x86_64:
-  "_ft_lstmap", referenced from:
-      _main in main-3cb757.o
-ld: symbol(s) not found for architecture x86_64
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
+Nothing turned in
 
 = ft_lstnew ====================================================================
-$> norminette ft_lstnew.c | grep -E '(Error|Warning)'
-$> clang -Wextra -Wall -Werror /Users/dokwak/42_cursus/test-libft/tests/Bonus_functions/ft_lstnew/main.c -L/Users/dokwak/42_cursus/test-libft/tmp_tests_dir -lft -I/Users/dokwak/42_cursus/test-libft/tmp_tests_dir
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
-= Test 2 ===================================================
-$> ./user_exe 02
-$> diff -U 3 user_output_test02 test02.output
-
-Diff OK :D
-= Test 3 ===================================================
-$> ./user_exe 03
-$> diff -U 3 user_output_test03 test03.output
-
-Diff OK :D
+Nothing turned in
 
 = ft_lstsize ===================================================================
-$> norminette ft_lstsize.c | grep -E '(Error|Warning)'
-$> clang -Wextra -Wall -Werror /Users/dokwak/42_cursus/test-libft/tests/Bonus_functions/ft_lstsize/main.c -L/Users/dokwak/42_cursus/test-libft/tmp_tests_dir -lft -I/Users/dokwak/42_cursus/test-libft/tmp_tests_dir
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
-= Test 2 ===================================================
-$> ./user_exe 02
-$> diff -U 3 user_output_test02 test02.output
-
-Diff OK :D
-= Test 3 ===================================================
-$> ./user_exe 03
-$> diff -U 3 user_output_test03 test03.output
-
-Diff OK :D
+Nothing turned in
 
 = Additional_functions =========================================================
 
