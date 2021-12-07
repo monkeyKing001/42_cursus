@@ -6,7 +6,7 @@
 #    By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/09 01:09:18 by dokwak            #+#    #+#              #
-#    Updated: 2021/12/03 16:31:26 by dokwak           ###   ########.fr        #
+#    Updated: 2021/12/07 14:48:42 by dokwak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@
 # $^: the whole file list of dependencies
 # $?: file list that touched latter than TARGERT
 # $+: similiart with $^ but includes duplicates file name
-
 # ar command options
 
 # <c> : Create the archive.  The specified archive is always created if it did not exist, when you request an update.  But a warning is issued unless you specify in advance that you expect to create it, by using this modifier.
@@ -95,37 +94,41 @@ BONUS_PART = 	ft_lstnew \
 				ft_lstiter \
 				ft_lstmap 
 
-SRCS_DIR = ./srcs/
+#SRCS_DIR = ./srcs/
 SRCS = $(addsuffix .c, $(MANDATORY_PART))
-#SRCS = $(addsuffix .c, $(MANDATORY_PART))
 SRCS_B = $(addsuffix .c, $(BONUS_PART))
 
-OBJS_DIR = ./includes/
-OBJS = $(addsuffix .o, $(MANDATORY_PART))
-#OBJS = $(addsuffix .o, $(MANDATORY_PART))
-OBJS_B = $(addsuffix .o, $(BONUS_PART))
+#OBJS_DIR = ./includes/
+ifdef WITH_BONUS
+	OBJS = $(OBJS_MANDATORY) $(OBJS_BONUS)
+else
+	OBJS = $(addsuffix .o, $(MANDATORY_PART))
+endif
 
+OBJS_MANDATORY = $(addsuffix .o, $(MANDATORY_PART))
+OBJS_BONUS = $(addsuffix .o, $(BONUS_PART))
 
-# compile and making object files
+# $@: target name
 # %.o (%.c) is similar with *.o (*.c)
-.c.o: $(SRCS)
+# $<: first file of dependencies list
+.c.o: $(SRCS) $(SRCS_B)
 	$(CC) $(CFLAGS) -c -o $@ $< 
 
 # linking
 $(NAME): $(OBJS)
 	$(AR) $@ $^
 
+# rules
 all: $(NAME)
 
-bonus: $(OBJS_B)
-	$(AR) $(NAME) $^
+bonus:
+	@make WITH_BONUS=1 all
 
 clean :
-	rm -f $(OBJS) $(OBJS_B)
+	rm -f $(OBJS_MANDATORY) $(OBJS_BONUS)
 
 fclean : clean
-	rm -f $(NAME)
-
+	rm -f $(NAME) $(OBJS_MANDATORY) $(OBJS_BONUS)
 re : clean all
 
 .PHONY : all clean fclean re bonus

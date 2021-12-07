@@ -6,11 +6,11 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 03:15:22 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/06 17:32:04 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/07 15:10:46 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-int	is_space(const char *s)
+static int	is_space(const char *s)
 {
 	if (*s == ' ' || *s == '\r' || *s == '\t'
 		|| *s == '\f' || *s == '\v' || *s == '\n')
@@ -18,7 +18,7 @@ int	is_space(const char *s)
 	return (0);
 }
 
-int	is_sig(const char *s, int *sig)
+static int	is_sig(const char *s, int *sig)
 {
 	if (*s == '-' || *s == '+')
 	{

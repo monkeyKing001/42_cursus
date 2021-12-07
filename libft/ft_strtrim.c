@@ -6,15 +6,12 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 23:30:01 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/06 17:57:00 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/07 15:47:08 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 /*
 ** size_t = -1 -> max size_t
-** 
-**
-**
 */
 
 char	*ft_strtrim(char const *s1, char const *set)

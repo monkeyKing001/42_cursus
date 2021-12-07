@@ -6,11 +6,24 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:46:55 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/06 18:29:08 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/07 16:45:38 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-long long	count_chnk_num(char const *s, char c)
+static void	free_all(char **ret_pnt)
+{
+	long long	i;
+
+	i = 0;
+	while (ret_pnt[i])
+	{
+		free(ret_pnt[i]);
+		i++;
+	}
+	free(ret_pnt);
+}
+
+static long long	count_chnk_num(char const *s, char c)
 {
 	long long	chnk_num;
 	char const	*s_pnt1;
@@ -38,10 +51,35 @@ long long	count_chnk_num(char const *s, char c)
 ** s = o, s_pnt1 = v 											
 */
 
-char	**ft_split(char const *s, char c)
+static char	**ft_sub_split(char **ret_pnt, char const *s, char c)
 {
 	long long	i;
 	char const	*s_pnt1;
+
+	i = 0;
+	while (*s)
+	{
+		s_pnt1 = ft_strchr(s, c);
+		if (s_pnt1 == NULL || s_pnt1 != s)
+		{
+			if (s_pnt1 == NULL)
+				ret_pnt[i] = ft_substr(s, 0, ft_strlen((char *)s));
+			else if (s_pnt1 != s)
+				ret_pnt[i] = ft_substr(s, 0, s_pnt1 - s);
+			if (ret_pnt[i] == NULL)
+				free_all(ret_pnt);
+			i++;
+		}
+		if (s_pnt1 == NULL)
+			break ;
+		s = s_pnt1 + 1;
+	}
+	ret_pnt[i] = NULL;
+	return (ret_pnt);
+}
+
+char	**ft_split(char const *s, char c)
+{
 	char		**ret_pnt;
 
 	if (!s)
@@ -49,21 +87,7 @@ char	**ft_split(char const *s, char c)
 	ret_pnt = malloc(sizeof(char *) * (count_chnk_num(s, c) + 1));
 	if (ret_pnt == NULL)
 		return (NULL);
-	s_pnt1 = s;
-	i = 0;
-	while (*s)
-	{
-		s_pnt1 = ft_strchr(s, c);
-		if (s_pnt1 == NULL)
-		{
-			ret_pnt[i++] = ft_substr(s, 0, ft_strlen((char *)s));
-			break ;
-		}
-		if (s_pnt1 != s)
-			ret_pnt[i++] = ft_substr(s, 0, s_pnt1 - s);
-		s = s_pnt1 + 1;
-	}
-	ret_pnt[i] = NULL;
+	ret_pnt = ft_sub_split(ret_pnt, s, c);
 	return (ret_pnt);
 }
 /*
