@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:46:55 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/07 20:23:42 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/09 16:42:42 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -74,6 +74,8 @@ static char	**ft_sub_split(char **ret_pnt, char const *s, char c)
 			i++;
 		}
 		if (s_pnt1 == NULL)
+			break ;
+		if (*s_pnt1 == 0)
 			break ;
 		s = s_pnt1 + 1;
 	}
