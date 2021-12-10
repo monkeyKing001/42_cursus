@@ -4,8 +4,8 @@
 int	main(void)
 {
 	char	**pnt;
-	char	*test = "a....";
-	char	del = '.';
+	char	*test = "abc..d..efg";
+	char	del = 0;
 
 	int	i = 0;
 
@@ -19,5 +19,6 @@ int	main(void)
 		i++;
 	}
 	printf("total splited num : %d\n", i);
+	printf("strlen : %zu\n", ft_strlen(test));
 	return (0);
 }
