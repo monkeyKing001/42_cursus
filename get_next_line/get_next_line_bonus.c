@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:20:47 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/16 17:45:31 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/16 17:08:58 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -86,11 +86,9 @@ char	*get_next_line(int fd)
 	char		*ret_line;
 	static char	*buf_line[OPEN_MAX];
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
+	if (fd > OPEN_MAX || fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	buf_line[fd] = ft_read_fd_fill_buf(buf_line[fd], fd);
-	if (!buf_line[fd])
-		return (0);
 	ret_line = ft_extract_line(buf_line[fd]);
 	buf_line[fd] = ft_flush_out_oneline(buf_line[fd]);
 	return ((char *)ret_line);
