@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:20:47 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/16 17:45:31 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/20 01:16:33 by gwagdong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -40,7 +40,7 @@ static char	*ft_extract_line(char *buf)
 
 	newline_pnt = ft_strchr(buf, '\n');
 	if (newline_pnt == NULL)
-		len = ft_strlen(buf);
+		len = ft_strlen(buf) + 1;
 	else
 		len = newline_pnt - buf + 2;
 	if (len == 0)
@@ -52,9 +52,10 @@ static char	*ft_extract_line(char *buf)
 	return (ret_str);
 }
 /*
-** ret_str size is pnt - buf + 1 + 1(null char)
-** 
-**
+** if) newline_pnt == NULL 
+** ret_str size is pnt - buf + 1(null char)
+** else) 
+** ret_str size is pnt - buf + 1(\n) + 1(null char)
 */
 
 static char	*ft_read_fd_fill_buf(char *buf, int fd)
