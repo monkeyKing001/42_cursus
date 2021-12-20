@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:46:55 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/10 11:10:10 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/20 17:26:23 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -60,6 +60,7 @@ static char	**ft_sub_split(char **ret_pnt, char const *s, char c)
 	char const	*s_pnt1;
 
 	i = 0;
+	s_pnt1 = s;
 	while (*s)
 	{
 		s_pnt1 = ft_strchr(s, c);
