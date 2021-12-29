@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:20:47 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/20 12:23:17 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/29 22:15:21 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
+
 static char	*ft_flush_out_oneline(char *buf)
 {
 	char	*newline_pnt;
@@ -101,7 +102,7 @@ char	*get_next_line(int fd)
 /*
 ** you can check OPEN_MAX with command $> ulimit -n
 ** fill up the buffer from until buffer contains at least one of  '\n'
+** NULL char(EOF returns NULL pointer to buf_line)
 ** extract one line from buffer 
 ** flush out one line from buffer 
-** 
 */

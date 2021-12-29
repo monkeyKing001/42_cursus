@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 15:20:57 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/29 12:30:24 by dokwak           ###   ########.fr       */
+/*   Created: 2021/12/28 14:43:19 by dokwak            #+#    #+#             */
+/*   Updated: 2021/12/29 16:18:48 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include "get_next_line.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024 
-# endif
+int	main(int argc, char **argv)
+{
+	char	*line;
+	int		fd;
 
-char	*get_next_line(int fd);
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size);
-size_t	ft_strlen(char *s);
-char	*ft_strjoin(char *s1, char *s2);
-#endif
+	fd = open(argv[argc - 1], O_RDONLY);
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		printf("%s", line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (0);
+}

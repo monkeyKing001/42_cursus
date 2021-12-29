@@ -6,10 +6,11 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:20:47 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/20 12:23:17 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/29 22:14:51 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
+
 static char	*ft_flush_out_oneline(char *buf)
 {
 	char	*newline_pnt;
@@ -87,21 +88,21 @@ static char	*ft_read_fd_fill_buf(char *buf, int fd)
 char	*get_next_line(int fd)
 {
 	char		*ret_line;
-	static char	*buf_line[OPEN_MAX];
+	static char	*buf_line;
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	buf_line[fd] = ft_read_fd_fill_buf(buf_line[fd], fd);
-	if (!buf_line[fd])
+	buf_line = ft_read_fd_fill_buf(buf_line, fd);
+	if (!buf_line)
 		return (0);
-	ret_line = ft_extract_line(buf_line[fd]);
-	buf_line[fd] = ft_flush_out_oneline(buf_line[fd]);
+	ret_line = ft_extract_line(buf_line);
+	buf_line = ft_flush_out_oneline(buf_line);
 	return ((char *)ret_line);
 }
 /*
 ** you can check OPEN_MAX with command $> ulimit -n
 ** fill up the buffer from until buffer contains at least one of  '\n'
+** NULL char(EOF returns NULL pointer to buf_line)
 ** extract one line from buffer 
 ** flush out one line from buffer 
-** 
 */

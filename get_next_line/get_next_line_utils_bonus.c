@@ -1,15 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:21:02 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/16 17:04:36 by dokwak           ###   ########.fr       */
+/*   Updated: 2021/12/28 19:52:46 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *s)
 {
@@ -88,13 +88,3 @@ char	*ft_strjoin(char *s1, char *s2)
 ** free s1
 ** called s1 become new allocated str(s1 + s2)
 */
-
-void	*ft_memset(void *dest, int c, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-		((unsigned char *)dest)[i++] = (unsigned char)c;
-	return (dest);
-}
