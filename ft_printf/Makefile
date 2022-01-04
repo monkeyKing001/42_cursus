@@ -5,11 +5,10 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/09 01:09:18 by dokwak            #+#    #+#              #
-#    Updated: 2022/01/04 17:13:03 by dokwak           ###   ########.fr        #
+#    Created: 2022/01/04 16:59:12 by dokwak            #+#    #+#              #
+#    Updated: 2022/01/04 17:18:16 by dokwak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 # Basic script for makefile
 #
 # target ... : prerequisites(or dependencies) ...
@@ -43,78 +42,36 @@
 #			 
 #$(NAME): $(OBJS)
 #	$(CC) -o $@ $(OBJS)
-
+#
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 
-NAME = libft.a
-MANDATORY_PART = 	ft_isalpha \
-					ft_isdigit \
-					ft_isalnum \
-					ft_isascii \
-					ft_isprint \
-					ft_strlen \
-					ft_memset \
-					ft_bzero \
-					ft_memcpy \
-					ft_memmove \
-					ft_strlcpy \
-					ft_strlcat \
-					ft_toupper \
-					ft_tolower \
-					ft_strchr \
-					ft_strrchr \
-					ft_strncmp \
-					ft_memchr \
-					ft_memcmp \
-					ft_strnstr \
-					ft_atoi \
-					ft_calloc \
-					ft_strdup \
-					ft_substr \
-					ft_strjoin \
-					ft_strtrim \
-					ft_split \
-					ft_itoa \
-					ft_strmapi \
-					ft_striteri \
-					ft_putchar_fd \
-					ft_putstr_fd \
-					ft_putendl_fd \
-					ft_putnbr_fd \
+NAME = libftprintf.a
+MANDATORY_PART = 	ft_printf
 
-BONUS_PART = 	ft_lstnew \
-				ft_lstadd_front \
-				ft_lstsize \
-				ft_lstlast \
-				ft_lstadd_back \
-				ft_lstdelone \
-				ft_lstclear \
-				ft_lstiter \
-				ft_lstmap 
 
-#SRCS_DIR = ./srcs/
+# SRCS (.c files)
 SRCS = $(addsuffix .c, $(MANDATORY_PART))
 SRCS_B = $(addsuffix .c, $(BONUS_PART))
 
-#OBJS_DIR = ./includes/
-ifdef WITH_BONUS
-	OBJS = $(OBJS_MANDATORY) $(OBJS_BONUS)
-else
-	OBJS = $(addsuffix .o, $(MANDATORY_PART))
-endif
-
+# OBJS (.o files)
 OBJS_MANDATORY = $(addsuffix .o, $(MANDATORY_PART))
 OBJS_BONUS = $(addsuffix .o, $(BONUS_PART))
 
+# OBJS script
 # $@: target name
 # %.o (%.c) is similar with *.o (*.c)
 # $<: first file of dependencies list
 .c.o: $(SRCS) $(SRCS_B)
 	$(CC) $(CFLAGS) -c -o $@ $< 
 
-# linking
+ifdef WITH_BONUS
+	OBJS = $(OBJS_MANDATORY) $(OBJS_BONUS)
+else
+	OBJS = $(addsuffix .o, $(MANDATORY_PART))
+endif
+#linking
 $(NAME): $(OBJS)
 	$(AR) $@ $^
 

@@ -6,15 +6,16 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:13:22 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/03 15:56:55 by dokwak           ###   ########.fr       */
+/*   Updated: 2022/01/04 17:20:25 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# include <unistd.h>
+
 typedef struct s_list
 {
 	void			*content;
