@@ -6,7 +6,7 @@
 #    By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 16:59:12 by dokwak            #+#    #+#              #
-#    Updated: 2022/01/04 17:18:16 by dokwak           ###   ########.fr        #
+#    Updated: 2022/01/13 17:36:34 by dokwak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Basic script for makefile
@@ -43,13 +43,20 @@
 #$(NAME): $(OBJS)
 #	$(CC) -o $@ $(OBJS)
 #
+NAME = libftprintf.a
+LIBFT = libft
+LIBFT_LIB = libft.a
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
+AR = ar rc
+INCS = .
 
-NAME = libftprintf.a
-MANDATORY_PART = 	ft_printf
+MANDATORY_PART = 	ft_printf\
+					ft_printf_utils\
+					ft_printf_char
 
+# BONUS =
 
 # SRCS (.c files)
 SRCS = $(addsuffix .c, $(MANDATORY_PART))
@@ -63,17 +70,28 @@ OBJS_BONUS = $(addsuffix .o, $(BONUS_PART))
 # $@: target name
 # %.o (%.c) is similar with *.o (*.c)
 # $<: first file of dependencies list
-.c.o: $(SRCS) $(SRCS_B)
-	$(CC) $(CFLAGS) -c -o $@ $< 
 
 ifdef WITH_BONUS
 	OBJS = $(OBJS_MANDATORY) $(OBJS_BONUS)
 else
-	OBJS = $(addsuffix .o, $(MANDATORY_PART))
+	OBJS = $(OBJS_MANDATORY)
 endif
 #linking
-$(NAME): $(OBJS)
-	$(AR) $@ $^
+# $@: target name
+# %.o (%.c) is similar with *.o (*.c)
+# $<: first file of dependencies list
+# $^: the whole file list of dependencies
+# $?: file list that touched latter than TARGERT
+# $+: similiart with $^ but includes duplicates file name
+
+# my version be caution for 'ar' vs 'AR'
+.c.o: $(SRCS) $(SRCS_B)
+	$(CC) $(CFLAGS) -c $< -o $@ 
+
+$(NAME) : $(OBJS)
+	make all -C $(LIBFT)/
+	cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
+	$(AR) $(NAME) $(OBJS)
 
 # rules
 all: $(NAME)
@@ -83,9 +101,11 @@ bonus:
 
 clean :
 	rm -f $(OBJS_MANDATORY) $(OBJS_BONUS)
+	make clean -C $(LIBFT)
 
 fclean : clean
 	rm -f $(NAME) $(OBJS_MANDATORY) $(OBJS_BONUS)
+	make fclean -C $(LIBFT)
 re : clean all
 
 .PHONY : all clean fclean re bonus
