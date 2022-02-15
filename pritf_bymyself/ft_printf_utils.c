@@ -6,16 +6,14 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 11:40:54 by dokwak            #+#    #+#             */
-/*   Updated: 2022/01/31 16:47:10 by dokwak           ###   ########.fr       */
+/*   Updated: 2022/02/10 21:43:51 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
 
 t_options	*init_options(t_options	*options)
 {
 	options -> flag[0] = 0;
-	options -> left_align = 0;
 	options -> width = 0;
 	options -> precision = -1;
 	options -> type = 0;
@@ -32,6 +30,7 @@ t_box	*init_box(t_box *box)
 	box -> value = 0; //va_arg 값
 	box -> value_len = 0; //va_arg 값의 길이
 	box -> base_len = (int)ft_strlcpy(box -> base, "0123456789", 11); //진수
+	box -> precision = -1;
 	return (box);
 }
 

@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_printf_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 21:12:03 by dokwak            #+#    #+#             */
-/*   Updated: 2022/02/04 16:04:01 by dokwak           ###   ########.fr       */
+/*   Created: 2022/02/03 21:18:24 by dokwak            #+#    #+#             */
+/*   Updated: 2022/02/14 14:52:11 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
-/*
-** this func gets digit number of n, n cannot be zero(0) 
-** if n is less than 0, allocate one more num for sign '-'
-*/
-static int	get_digit_num(int n)
+#include "ft_printf.h"
+
+int		ft_printf_unsigned(t_box *box)
+{
+	int		ret_len;
+	char	*nbr_str;
+
+	ret_len = 0;
+	//nbr_str = ft_uitoa((unsigned int)box -> value);
+	nbr_str = ull_to_hexbase(box -> value, box -> base);
+	if (box -> prefix_len == 2 && box -> value != 0)
+	{
+		box -> left_margin -= 2;
+		box -> right_margin -= 2;
+	}
+	ret_len += ft_printf_leftmargin_nbr(box);
+	ret_len += write(1, nbr_str, box -> value_len);
+	ret_len += ft_printf_rightmargin_nbr(box);
+	//free itoa box
+	free(nbr_str);
+	return (ret_len);
+}
+static int	get_digit_num(unsigned int n)
 {
 	int	digit_num;
 
 	digit_num = 0;
-	if (n < 0)
-		digit_num++;
 	while (n)
 	{
 		digit_num++;
@@ -34,21 +49,16 @@ static int	get_digit_num(int n)
 ** so, if n is 0, we can not get right digit_num.
 */
 
-static void	itoa_rec(int n, int index, char **db_pnt)
+static void	itoa_rec(unsigned int n, int index, char **db_pnt)
 {
-	int		mod;
-	int		div;
-	char	*pnt;
+	unsigned int	mod;
+	unsigned int	div;
+	char			*pnt;
 
 	if (n == 0)
 		return ;
 	mod = n % 10;
 	div = n / 10;
-	if (n < 0)
-	{
-		mod *= -1;
-		div *= -1;
-	}
 	pnt = *db_pnt;
 	pnt[index] = mod + '0';
 	itoa_rec(div, index - 1, db_pnt);
@@ -60,7 +70,7 @@ static void	itoa_rec(int n, int index, char **db_pnt)
 ** fillin the pnt[] from last index(remainder)
 */
 
-char	*ft_itoa(int n)
+char	*ft_uitoa(unsigned int n)
 {
 	int		digit_num;
 	char	*pnt;
@@ -71,8 +81,6 @@ char	*ft_itoa(int n)
 	pnt = malloc(sizeof(char) * digit_num + 1);
 	if (pnt == NULL)
 		return (NULL);
-	if (n < 0)
-		pnt[0] = '-';
 	pnt[digit_num] = 0;
 	itoa_rec(n, digit_num - 1, &pnt);
 	return (pnt);

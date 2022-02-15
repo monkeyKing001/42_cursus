@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 14:03:53 by dokwak            #+#    #+#             */
-/*   Updated: 2022/01/31 16:42:01 by dokwak           ###   ########.fr       */
+/*   Updated: 2022/02/10 20:01:18 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -47,4 +47,29 @@ t_options	*ft_read_options(t_options *options, va_list ap, const char *format, i
 	else if (ft_strchr(FLAG, format[i]) && !ft_strchr(options -> flag, format[i]))
 		ft_strlcat(options -> flag, &format[i], ft_strlen(options -> flag) + 2);
 	return (options);
+}
+int		ft_printf_boxing(t_options *options, t_box *box, va_list ap)
+{
+	
+	if (!ft_strchr(TYPE, options -> type) || !options_flag_check(options))
+		return (0);
+	//value byte and original value assignment
+	if (options -> type == 'c' || options -> type == 'd' || options -> type == 'i')
+		box -> value = va_arg(ap, int);
+	else if(options -> type == 'u' || options -> type == 'x' || options -> type == 'X')
+		box -> value = va_arg(ap, unsigned int);
+	else if(options -> type == 's' || options -> type == 'p')
+		box -> value = va_arg(ap, unsigned long long);
+	else if(options -> type == '%')
+		box -> value = '%';
+	//margin assignment
+	//flag assignment
+	if (!ft_boxing_flag_n_base(options, box))
+		return (0);
+	if (!ft_boxing_value_len_n_precision(options, box))
+		return (0);
+	//precision assignment
+	if (!ft_boxing_margin(options, box))
+		return (0);
+	return (1);
 }

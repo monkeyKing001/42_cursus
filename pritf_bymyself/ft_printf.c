@@ -6,17 +6,18 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:00:38 by dokwak            #+#    #+#             */
-/*   Updated: 2022/01/26 18:15:23 by dokwak           ###   ########.fr       */
+/*   Updated: 2022/02/09 18:38:07 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+
 int	ft_printf_sub(const char *format, va_list ap, t_options *options, t_box *box)
 {
 	int			ret_len; //output len
 	int			i;
 
-	ret_len = 0;
 	i = 0;
+	ret_len = 0;
 	while(format[i] != '\0')
 	{
 		while (format[i] != '%' && format[i] != '\0')
@@ -30,7 +31,7 @@ int	ft_printf_sub(const char *format, va_list ap, t_options *options, t_box *box
 			options -> type = format[i++];
 			box = init_box(box);
 			if (ft_strchr(TYPE, options->type) && ft_printf_boxing(options, box, ap))/* boxing procss */
-				ret_len += ft_printf_type(options, box, ap);/* printing procss */
+				ret_len += ft_printf_type(options, box);/* printing procss */
 			else
 				ret_len = -1;
 		}

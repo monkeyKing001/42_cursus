@@ -6,7 +6,7 @@
 #    By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 16:59:12 by dokwak            #+#    #+#              #
-#    Updated: 2022/01/31 18:32:19 by dokwak           ###   ########.fr        #
+#    Updated: 2022/02/04 16:14:38 by dokwak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Basic script for makefile
@@ -61,6 +61,7 @@ MANDATORY_PART = 	ft_printf\
 					ft_printf_char\
 					ft_printf_string\
 					ft_printf_pnt\
+					ft_printf_unsigned\
 					ft_printf_nbr
 
 # BONUS =

@@ -6,17 +6,20 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 16:22:12 by dokwak            #+#    #+#             */
-/*   Updated: 2022/01/26 16:21:21 by dokwak           ###   ########.fr       */
+/*   Updated: 2022/02/09 21:06:56 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-int	ft_printf_char(t_box *box, int c)
-{
-	int	ret_len;
 
+int	ft_printf_char(t_box *box)
+{
+	int		ret_len;
+	char	chr;
+
+	chr = (char)(box -> value);
 	ret_len = 0;
 	ret_len += ft_printf_leftmargin(box);
-	ret_len += write(1, &c, sizeof(char));
+	ret_len += write(1, &chr, 1);
 	ret_len += ft_printf_rightmargin(box);
 	return (ret_len);
 }
