@@ -1,44 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/07 18:58:26 by dokwak            #+#    #+#             */
-/*   Updated: 2022/01/12 17:07:34 by dokwak           ###   ########.fr       */
+/*   Created: 2022/01/15 16:22:12 by dokwak            #+#    #+#             */
+/*   Updated: 2022/02/24 01:41:32 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	put_width(int width, int len, int zero)
+int	ft_printf_char(t_box *box)
 {
-	int		ret;
+	int		ret_len;
+	char	chr;
 
-	ret = 0;
-	while (len < width)
-	{
-		if (zero == 1)
-			write(1, "0", 1);
-		else
-			write(1, " ", 1);
-		len++;
-		ret++;
-	}
-	return (ret);
+	chr = (char)(box -> value);
+	ret_len = 0;
+	ret_len += ft_printf_leftmargin(box);
+	ret_len += write(1, &chr, 1);
+	ret_len += ft_printf_rightmargin(box);
+	return (ret_len);
 }
 
-int	print_char(int c, t_info *info)
+int	ft_printf_leftmargin(t_box *box)
 {
-	int		ret;
+	int	ret_len;
+	int	i;
 
-	ret = 0;
-	if (info->type == '%' && info->left_align == 1)
-		info->zero = 0;
-	if (info->left_align == 1)
-		ret += write(1, &c, 1);
-	ret += put_width(info->width, 1, info->zero);
-	if (info->left_align == 0)
-		ret += write(1, &c, 1);
-	return (ret);
+	i = -1;
+	ret_len = 0;
+	if (box -> left_margin > (int) sizeof(char))
+		while (++i + (int) sizeof(char) < box -> left_margin)
+			ret_len += write(1, " ", 1);
+	return (ret_len);
+}
+
+int	ft_printf_rightmargin(t_box *box)
+{
+	int	ret_len;
+	int	i;
+
+	i = -1;
+	ret_len = 0;
+	if (box -> right_margin > (int) sizeof(char))
+		while (++i + (int) sizeof(char) < box -> right_margin)
+			ret_len += write(1, " ", 1);
+	return (ret_len);
 }

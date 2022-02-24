@@ -6,7 +6,7 @@
 #    By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 16:59:12 by dokwak            #+#    #+#              #
-#    Updated: 2022/01/13 17:36:34 by dokwak           ###   ########.fr        #
+#    Updated: 2022/02/24 18:24:35 by dokwak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Basic script for makefile
@@ -53,10 +53,28 @@ AR = ar rc
 INCS = .
 
 MANDATORY_PART = 	ft_printf\
+					ft_printf_preprocess\
+					ft_printf_printphase\
+					ft_printf_boxing\
 					ft_printf_utils\
-					ft_printf_char
+					ft_printf_utils2\
+					ft_printf_char\
+					ft_printf_string\
+					ft_printf_pnt\
+					ft_printf_unsigned\
+					ft_printf_nbr
 
-# BONUS =
+BONUS_PART		 = 	ft_printf\
+					ft_printf_preprocess\
+					ft_printf_printphase\
+					ft_printf_boxing\
+					ft_printf_utils\
+					ft_printf_utils2\
+					ft_printf_char\
+					ft_printf_string\
+					ft_printf_pnt\
+					ft_printf_unsigned\
+					ft_printf_nbr
 
 # SRCS (.c files)
 SRCS = $(addsuffix .c, $(MANDATORY_PART))
@@ -76,7 +94,7 @@ ifdef WITH_BONUS
 else
 	OBJS = $(OBJS_MANDATORY)
 endif
-#linking
+# linking
 # $@: target name
 # %.o (%.c) is similar with *.o (*.c)
 # $<: first file of dependencies list

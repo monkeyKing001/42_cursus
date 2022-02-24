@@ -5,51 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/04 16:47:55 by dokwak            #+#    #+#             */
-/*   Updated: 2022/01/13 17:26:05 by dokwak           ###   ########.fr       */
+/*   Created: 2022/01/13 19:01:26 by dokwak            #+#    #+#             */
+/*   Updated: 2022/02/24 18:42:42 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include <unistd.h>
 # include <stdarg.h>
 # include <stdlib.h>
-# include <unistd.h>
 # include "./libft/libft.h"
 
 # define TYPE "csdiupxX%"
-
+# define FLAG "0-*+# "
+# define NULL_STR "(null)"
 /*
-** info structure
-*/
-typedef struct s_flag
-{
-	int	flag;
-	int	width;
-	int	precision;
-	int	type;
-}							t_flag;
-typedef struct s_info
-{
-	int			left_align;
-	int			zero;
-	int			width;
-	int			prec;
-	char		type;
-	int			nbr_base;
-	int			nbr_sign;
-	char		flag;
-}	t_info;
-
-/*
-**
 ** printf("%[flag][width][.precision][length]formatspecifier", $(* pnt))
 **	char	[flag]
 ** 		'-' 	: left align. 
 **		'0'		: fill left width with '0'.
 **		'+' 	: express sign.(bonus part) 
-**		' ' 	: do not express flag except minus sign if the case is.(bonus part)
+**		' ' 	: do not express options except minus sign if the case is.(bonus part)
 **		'#'		: express base number ex) 0, 0x, 0X.(bonus part)
 **	int		[width]
 ** 	int		[.precision]
@@ -66,29 +44,115 @@ typedef struct s_info
 **		%% print a percent sign.
 */
 
+typedef struct s_options
+{
+	char	flag[7];
+	int		width;
+	int		precision;
+	int		type;
+}	t_options;
+
+typedef struct s_box
+{
+	int			left_margin;
+	int			right_margin;
+	char		sign;
+	int			zero_len;
+	int			prefix_len;
+	long long	value;
+	int			value_len;
+	char		base[20];
+	int			base_len;
+	int			precision;
+}	t_box;
 /*
-** ft_printf 
+**	int						left_margin; 	-> number of left_margin (=options -> width)
+**	int						right_margin; 	-> number of right_margin (=options -> width)
+**	char					sign; 			-> number sign
+**	int						zero_len; 		-> number of zero char
+**	int 					prefix_len; 	-> 0 -> not prefix, 2 -> 0x prefix_len = 2;
+**	long long     			value; 			-> va_arg's argument 
+**	int						value_len; 		-> length of str(va_arg)
+**	char					base[20]; 		-> number_base
+**	int						base_len; 		-> base_len
+**	int						precision; 		-> precision
 */
-int		ft_printf(char const *argv, ...);
-int		ft_printf_sub(va_list ap, char *format);
-int		print_format(va_list ap, t_info *info);
-void	check_width_and_prec(va_list ap, char *format, t_info *info, int i);
 
 /*
-** ft_printf_char 
-*/
-int		print_char(int c, t_info *info);
-int		put_width(int width, int len, int zero);
+ ** ft_printf
+ */
+int				ft_printf(const char *format, ...);
+int				ft_printf_sub(const char *format, va_list ap,
+					t_options *options, t_box *box);
 
 /*
-** ft_printf_str 
-*/
-int		print_string(char *str, t_info *info);
-
+ ** ft_printf_preprocess
+ */
+t_options		*ft_read_ap(t_options *options, va_list ap);
+t_options		*ft_read_options(t_options *options,
+					va_list ap, const char *format, int i);
+int				ft_printf_boxing(t_options *options, t_box *box, va_list ap);
 
 /*
-** ft_printf_uitils 
+ ** ft_printf_utils
+ */
+t_options		*init_options(t_options	*options);
+t_box			*init_box(t_box *box);
+int				options_flag_check(t_options *options);
+
+/*
+ ** ft_printf_utils2
+ */
+char			*ft_uitoa(unsigned int n);
+void			itoa_rec(unsigned int n, int index, char **db_pnt);
+char			*ull_to_hexbase(unsigned long long nbr, char *base_to);
+int				get_malloc_size(unsigned long long dec, char *base_to);
+
+/*
+** ft_printf_boxing
 */
-t_info	*info_init(t_info *info);
+int				ft_boxing_value_len_n_precision(t_options *options, t_box *box);
+int				ft_boxing_margin(t_options *options, t_box *box);
+int				ft_boxing_precision(t_options *options, t_box *box);
+int				ft_boxing_flag_n_base(t_options *options, t_box *box);
+
+/*
+** ft_printf_printphase
+*/
+int				ft_printf_type(t_options *options, t_box *box);
+
+/*
+** ft_printf_char
+*/
+int				ft_printf_leftmargin(t_box *box);
+int				ft_printf_rightmargin(t_box *box);
+int				ft_printf_char(t_box *box);
+
+/*
+** ft_printf_string
+*/
+int				ft_printf_leftmargin_str(t_box *box);
+int				ft_printf_rightmargin_str(t_box *box);
+int				ft_printf_str(t_box *box);
+
+/*
+** ft_printf_pnt
+*/
+int				ft_printf_pnt(t_box *box);
+
+/*
+** ft_printf_nbr
+*/
+int				ft_printf_nbr(t_box *box);
+int				ft_print_sign_case_padding_nbr(t_box *box, char padding_char);
+int				ft_print_no_sign_case_padding_nbr(t_box *box,
+					char padding_char);
+int				ft_printf_leftmargin_nbr(t_box *box);
+int				ft_printf_rightmargin_nbr(t_box *box);
+
+/*
+** ft_printf_unsigned
+*/
+int				ft_printf_unsigned(t_box *box);
 
 #endif
