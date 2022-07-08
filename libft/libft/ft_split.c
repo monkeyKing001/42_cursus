@@ -6,10 +6,11 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:46:55 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/20 17:26:23 by dokwak           ###   ########.fr       */
+/*   Updated: 2022/07/06 16:24:09 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+
 static char	**free_all(char **ret_pnt)
 {
 	long long	i;

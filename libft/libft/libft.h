@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:13:22 by dokwak            #+#    #+#             */
-/*   Updated: 2022/01/04 17:20:25 by dokwak           ###   ########.fr       */
+/*   Updated: 2022/07/08 19:11:32 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -27,6 +27,8 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+int		ft_isspace(const char *s);
+int		ft_issign(const char *s, int *sig);
 size_t	ft_strlen(char *str);
 void	*ft_memset(void *dest, int c, size_t n);
 void	ft_bzero(void *dest, size_t n);

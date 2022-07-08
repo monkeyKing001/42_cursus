@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_issign.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 13:22:00 by dokwak            #+#    #+#             */
-/*   Updated: 2021/11/20 18:40:53 by dokwak           ###   ########.fr       */
+/*   Created: 2022/07/06 17:02:42 by dokwak            #+#    #+#             */
+/*   Updated: 2022/07/08 19:28:25 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlen(char *str)
+int	ft_issign(const char *s, int *sig)
 {
-	size_t	ret_size;
-
-	ret_size = 0;
-	while (str[ret_size])
-		ret_size++;
-	return (ret_size);
+	if (*s == '-' || *s == '+')
+	{
+		if (*s == '-')
+			*sig = -1;
+		return (1);
+	}
+	return (0);
 }

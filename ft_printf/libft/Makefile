@@ -6,7 +6,7 @@
 #    By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/09 01:09:18 by dokwak            #+#    #+#              #
-#    Updated: 2022/01/04 17:13:03 by dokwak           ###   ########.fr        #
+#    Updated: 2022/07/08 19:10:10 by dokwak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,8 @@ AR = ar rcs
 
 NAME = libft.a
 MANDATORY_PART = 	ft_isalpha \
+					ft_isspace \
+					ft_issign \
 					ft_isdigit \
 					ft_isalnum \
 					ft_isascii \

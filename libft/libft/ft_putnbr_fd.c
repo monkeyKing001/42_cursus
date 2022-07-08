@@ -6,10 +6,11 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:44:39 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/07 15:23:09 by dokwak           ###   ########.fr       */
+/*   Updated: 2022/07/06 16:23:52 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+
 static void	putnbr_rec(long long lln, int fd)
 {
 	char		digit;

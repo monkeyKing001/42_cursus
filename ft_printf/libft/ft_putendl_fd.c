@@ -6,11 +6,11 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:16:47 by dokwak            #+#    #+#             */
-/*   Updated: 2021/12/03 13:19:45 by dokwak           ###   ########.fr       */
+/*   Updated: 2022/07/06 16:23:41 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
+
 void	ft_putendl_fd(char *s, int fd)
 {
 	if (!s)
