@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:01:26 by dokwak            #+#    #+#             */
-/*   Updated: 2022/02/24 18:42:42 by dokwak           ###   ########.fr       */
+/*   Updated: 2022/02/25 10:20:17 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@
 **		%X print a number in hexadecimal (base 16), with uppercase.
 **		%% print a percent sign.
 */
-
 typedef struct s_options
 {
 	char	flag[7];

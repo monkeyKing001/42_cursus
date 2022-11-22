@@ -6,7 +6,7 @@
 /*   By: dokwak <dokwak@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:00:38 by dokwak            #+#    #+#             */
-/*   Updated: 2022/02/23 18:27:24 by dokwak           ###   ########.fr       */
+/*   Updated: 2022/02/25 12:29:11 by dokwak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -40,6 +40,7 @@ int	ft_printf_sub(const char *format, va_list ap,
 	}
 	return (ret_len);
 }
+
 /*
 ** until format[i] meets % print string
 ** until format[i] meets 'TYPE' read options
