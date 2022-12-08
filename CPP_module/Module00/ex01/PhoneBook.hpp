@@ -7,19 +7,19 @@
 #include <string>
 #include "Contact.hpp"
 
-#define CMD_NO_MATCH     -1
-#define CMD_EXIT         0
-#define CMD_ADD          1
-#define CMD_SEARCH       2
+#define PB_SIZE			8
+#define PADD_SIZE		10
+#define FIRST_NAME		F_MODE
+#define LAST_NAME		L_MODE
+#define NICK_NAME		N_MODE
+#define PHONE_NUMBER	P_MODE
+#define DARK_SECRET		D_MODE
 
-#define F_F_NAME         0
-#define F_L_NAME         1
-#define F_ALIAS          2
-#define F_PHONE          3
-#define F_SECRET         4
-
-#define PB_SIZE          8
-#define PADD_SIZE        10
+#define	F_MODE			0
+#define	L_MODE			1
+#define	N_MODE			2	
+#define	P_MODE			3
+#define	D_MODE			4
 
 /*************************************************/
 /****************      color       ***************/
@@ -29,6 +29,7 @@
 #define GREEN            "\033[0;32m"
 #define BLUE             "\033[0;34m"
 #define DEFAULT	         "\033[0;0m"
+#define WHITE_SPACE		" \t\r\n\v\f"
 
 /*************************************************/
 /****************      class       ***************/
@@ -40,7 +41,7 @@ class PhoneBook{
 //		const std::string search;
 		int	contact_num;
 		std::string cmd;
-		Contact contacts[8];
+		Contact contacts[PB_SIZE];
 
 	public:
 		void	init_book(void);

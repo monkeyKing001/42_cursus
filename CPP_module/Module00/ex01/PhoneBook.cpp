@@ -6,6 +6,8 @@ void	PhoneBook::init_book(void)
 
 void	PhoneBook::print_label(void)
 {
+	std::cout << YELLOW;
+	std::cout << "|";
 	std::cout << std::right << std::setw(10) << "Index";
     std::cout << "|";
     std::cout << std::right << std::setw(10) << "First name";
@@ -16,8 +18,8 @@ void	PhoneBook::print_label(void)
     std::cout << "|";
     std::cout << std::right << std::setw(10) << "Cell phone";
     std::cout << "|";
-    std::cout << std::right << std::setw(10) << "Dark secret";
-    std::cout << std::endl;
+    std::cout << std::right << std::setw(10) << "Secret";
+    std::cout << "|\n";
 }
 
 void	PhoneBook::print_field_w10(std::string _text)
@@ -36,9 +38,13 @@ void	PhoneBook::print_field_w10(std::string _text)
 void	PhoneBook::print_book(void)
 {
 	print_label();
+	std::cout << GREEN;
 	for (int i = 0; i < 8; i++)
 	{
+		std::cout << "|";
+		std::cout << YELLOW;
 		print_field_w10(std::to_string(i));
+		std::cout << GREEN;
 		std::cout << "|";
 		print_field_w10(this -> contacts[i].get_f_name());
 		std::cout << "|";
@@ -49,9 +55,9 @@ void	PhoneBook::print_book(void)
 		print_field_w10(this -> contacts[i].get_num());
 		std::cout << "|";
 		print_field_w10(this -> contacts[i].get_dark_secret());
-		std::cout << "\n";
+		std::cout << "|\n";
 	}
-	select_contact();
+	std::cout << DEFAULT;
 }
 
 void	PhoneBook::select_contact(void)

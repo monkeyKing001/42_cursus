@@ -15,16 +15,7 @@ class Contact{
 		//setter
 		void	init_contact(int mode, std::string *in, std::string &phrase);
 		void	set_field(void);
-		void	set_f_name(void);
-		void	set_l_name(void);
-		void	set_nick_name(void);
-		void	set_phone_num(void);
-		void	set_dark_secret(void);
-//		void	set_f_name(std::string);
-//		void	set_l_name(std::string);
-//		void	set_nick_name(std::string);
-//		void	set_phone_num(std::string);
-//		void	set_dark_secret(std::string);
+		void	set_str_var(std::string &mem_var, int MODE);
 
 		//getter
 		std::string get_f_name(void);

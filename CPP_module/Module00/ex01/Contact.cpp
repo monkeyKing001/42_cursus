@@ -1,78 +1,75 @@
 #include "Contact.hpp"
+#include "PhoneBook.hpp"
 void	Contact::set_field(void)
 {
-	set_f_name();
-	set_l_name();
-	set_nick_name();
-	set_phone_num();
-	set_dark_secret();
+	set_str_var(this -> f_name, F_MODE);
+	set_str_var(this -> l_name, L_MODE);
+	set_str_var(this -> nick_name, N_MODE);
+	set_str_var(this -> phone_num, P_MODE);
+	set_str_var(this -> dark_secret, D_MODE);
 }
 
-void	Contact::set_f_name(void)
-{
-	std::string f_name;
-	std::cout << "Input first name : ";
-	getline(std::cin, f_name);
-	//check empty field!!
-	this -> f_name = f_name;
-}
-
-void	Contact::set_l_name(void)
-{
-	std::string l_name;
-	std::cout << "Input last name : ";
-	getline(std::cin, l_name);
-	this -> l_name = l_name;
-}
-
-void	Contact::set_nick_name(void)
+void	Contact::set_str_var(std::string &mem_var, int MODE)
 {
 	std::string arg;
-	std::cout << "Input nick name : ";
+	std::string prompt;
+	//std::string mem;
+
+	//mode check
+	switch (MODE)
+	{
+		case F_MODE:
+			prompt = "First Name : ";
+			break ;
+		case L_MODE:
+			prompt = "Last Name : ";
+			break ;
+		case N_MODE:
+			prompt = "Nick Name : ";
+			break ;
+		case P_MODE:
+			prompt = "Phone Number : ";
+			break ;
+		case D_MODE:
+			prompt = "Dark Secret : ";
+			break ;
+	}
+	std::cout << prompt;
 	getline(std::cin, arg);
-	this -> nick_name = arg;
+	//check empty field
+	arg.erase(arg.find_last_not_of(WHITE_SPACE) + 1);
+	while (arg.size() == 0)
+	{
+		std::cout << RED;
+		std::cout << "Error : field cannot be empty.\n";
+		std::cout << DEFAULT;
+		std::cout << prompt;
+		getline(std::cin, arg);
+		arg.erase(arg.find_last_not_of(WHITE_SPACE) + 1);
+	}
+	//replace all of white spcase that is not just space to space
+	for (int i = 1; i < 6; i++)
+	{
+		char	to_be_rplc = WHITE_SPACE[i];
+		size_t	pos = arg.find(to_be_rplc);
+		while (pos != std::string::npos)
+		{
+			arg[pos] = ' ';	
+			pos = arg.find(to_be_rplc);
+		}
+	}
+	mem_var = arg;
 }
 
-void	Contact::set_phone_num(void)
-{
-	std::string arg;
-	std::cout << "Input phone_num : ";
-	getline(std::cin, arg);
-	this -> phone_num = arg;
-}
+std::string	Contact::get_f_name(void){ return (this -> f_name); }
 
-void	Contact::set_dark_secret(void)
-{
-	std::string arg;
-	std::cout << "Input dark_secret : ";
-	getline(std::cin, arg);
-	this -> dark_secret = arg;
-}
+std::string	Contact::get_l_name(void){ return (this -> l_name); }
 
-std::string	Contact::get_f_name(void)
-{
-	return (this -> f_name);
-}
+std::string	Contact::get_nick_name(void){ return (this -> nick_name); }
 
-std::string	Contact::get_l_name(void)
-{
-	return (this -> l_name);
-}
+std::string	Contact::get_num(void){ return (this -> phone_num); }
 
-std::string	Contact::get_nick_name(void)
-{
-	return (this -> nick_name);
-}
-
-std::string	Contact::get_num(void)
-{
-	return (this -> phone_num);
-}
-
-std::string	Contact::get_dark_secret(void)
-{
-	return (this -> dark_secret);
-}
+std::string	Contact::get_dark_secret(void) { return (this -> dark_secret); }
 
 void	Contact::print_contact(void)
 {
@@ -93,27 +90,3 @@ void	Contact::print_contact(void)
 		<< get_dark_secret()
 		<< "\n";
 }
-
-//void	Contact::set_f_name(std::string arg)
-//{
-//	this -> f_name = arg;
-//}
-//
-//void	Contact::set_l_name(std::string arg)
-//{
-//	this -> l_name = arg;
-//}
-//
-//void	Contact::set_nick_name(std::string arg)
-//{
-//	this -> nick_name = arg;
-//}
-//
-//void	Contact::set_phone_num(std::string arg)
-//{
-//	this -> phone_num = arg;
-//}
-//void	Contact::set_dark_secret(std::string arg)
-//{
-//	this -> dark_secret = arg;
-//}
