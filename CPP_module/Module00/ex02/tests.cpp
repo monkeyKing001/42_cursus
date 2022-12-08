@@ -21,12 +21,14 @@ int		main( void ) {
 
 	int	const				amounts[]	= { 42, 54, 957, 432, 1234, 0, 754, 16576 };
 	size_t const			amounts_size( sizeof(amounts) / sizeof(int) );
+	//func1 accounts : make account vector with int arr and return
 	accounts_t				accounts( amounts, amounts + amounts_size );
 	accounts_t::iterator	acc_begin	= accounts.begin();
 	accounts_t::iterator	acc_end		= accounts.end();
 
 	int	const			d[]			= { 5, 765, 564, 2, 87, 23, 9, 20 };
 	size_t const		d_size( sizeof(d) / sizeof(int) );
+	//function2 deposit : make vector <int> ints_t with int arr and return
 	ints_t				deposits( d, d + d_size );
 	ints_t::iterator	dep_begin	= deposits.begin();
 	ints_t::iterator	dep_end		= deposits.end();
@@ -34,30 +36,39 @@ int		main( void ) {
 	int	const			w[]			= { 321, 34, 657, 4, 76, 275, 657, 7654 };
 	size_t const		w_size( sizeof(w) / sizeof(int) );
 	ints_t				withdrawals( w, w + w_size );
+	//function2 deposit : make vector <int> ints_t with int arr and return
 	ints_t::iterator	wit_begin	= withdrawals.begin();
 	ints_t::iterator	wit_end		= withdrawals.end();
 
+	//Accounts.cpp function 1 displayAccountsInfos
 	Account::displayAccountsInfos();
+	//Accounts.cpp function 2 displayStatus
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, dep_begin );
 		  it.first != acc_end && it.second != dep_end;
 		  ++(it.first), ++(it.second) ) {
 
+	//Accounts.cpp function 3 makeDeposit
 		(*(it.first)).makeDeposit( *(it.second) );
 	}
 
+	//Accounts.cpp function 1 displayAccountsInfos
 	Account::displayAccountsInfos();
+	//Accounts.cpp function 2 displayStatus
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, wit_begin );
 		  it.first != acc_end && it.second != wit_end;
 		  ++(it.first), ++(it.second) ) {
 
+	//Accounts.cpp function 4 makeWithdrawal
 		(*(it.first)).makeWithdrawal( *(it.second) );
 	}
 
+//Accounts.cpp function 1 displayAccountsInfos
 	Account::displayAccountsInfos();
+	//Accounts.cpp function 2 displayStatus
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	return 0;

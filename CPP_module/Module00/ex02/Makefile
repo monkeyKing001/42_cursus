@@ -14,18 +14,19 @@ UNAME = $(shell uname -s)
 
 
 # Make variables
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
+CFLAGS =
 CDEBUG = -g -fsanitize=address -std=c++98
 RM = rm -f
-CC = clang++
+CC = g++
 SRC_DIR = .
 OBJ_DIR = .
 BIN_DIR = .
-BIN = megaphone
 NAME = $(BIN_DIR)/$(BIN)
 PRINTF = LC_NUMERIC="en_US.UTF-8" printf
 
-SRC = megaphone.cpp
+BIN = Account
+SRC = tests.cpp Account.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
@@ -59,6 +60,10 @@ fclean: clean
 
 re: fclean
 	@make all
+
+test:
+	make re
+	$(BIN_DIR)/$(BIN)
 
 git:
 	git add .
