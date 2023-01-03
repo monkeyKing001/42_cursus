@@ -15,7 +15,6 @@ UNAME = $(shell uname -s)
 
 # Make variables
 CFLAGS = -Wall -Wextra -Werror
-CFLAGS =
 CDEBUG = -g -fsanitize=address -std=c++98
 RM = rm -f
 CC = g++
@@ -25,8 +24,8 @@ BIN_DIR = .
 NAME = $(BIN_DIR)/$(BIN)
 PRINTF = LC_NUMERIC="en_US.UTF-8" printf
 
-BIN = Account
-SRC = tests.cpp Account.cpp
+BIN = a.out
+SRC = main.cpp Harl.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
@@ -70,4 +69,4 @@ git:
 	git commit
 	git push
 
-.PHONY: make clean fclean re
+.PHONY: make clean fclean re test

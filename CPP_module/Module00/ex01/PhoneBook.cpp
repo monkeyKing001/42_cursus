@@ -43,7 +43,10 @@ void	PhoneBook::print_book(void)
 	{
 		std::cout << "|";
 		std::cout << YELLOW;
-		print_field_w10(std::to_string(i));
+		std::stringstream temp;
+		temp << i;
+		std::string str = temp.str();
+		print_field_w10(str);
 		std::cout << GREEN;
 		std::cout << "|";
 		print_field_w10(this -> contacts[i].get_f_name());

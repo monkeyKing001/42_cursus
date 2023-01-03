@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "Contact.hpp"
 
 #define PB_SIZE			8

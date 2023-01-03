@@ -14,8 +14,8 @@ UNAME = $(shell uname -s)
 
 
 # Make variables
-CFLAGS = -Wall -Wextra -Werror
-CDEBUG = -g -fsanitize=address -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+CDEBUG = -g -fsanitize=address
 RM = rm -f
 CC = g++
 SRC_DIR = .

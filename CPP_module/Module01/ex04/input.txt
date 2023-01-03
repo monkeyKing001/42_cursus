@@ -1,0 +1,87 @@
+str
+Another string with the subject to search for.
+pos
+Position of the first character in the string to be considered in the search.
+If this is greater than the string length, the function never finds matches.
+Note: The first character is denoted by a value of 0 (not 1): A value of 0 means that the entire string is searched.
+s
+Pointer to an array of characters.
+If argument n is specified (3), the sequence to match are the first n characters in the array.
+Otherwise (2), a null-terminated sequence is expected: the length of the sequence to match is determined by the first occurrence of a null character.
+n
+Length of sequence of characters to match.
+c
+Individual character to be searched for.
+
+size_t is an unsigned integral type (the same as member type string::size_type).
+
+Return Value
+The position of the first character of the first match.
+If no matches were found, the function returns string::npos.
+
+size_t is an unsigned integral type (the same as member type string::size_type).
+
+Example
+// string::find
+#include <iostream>       // std::cout
+#include <string>         // std::string
+
+int main ()
+{
+  std::string str ("There are two needles in this haystack with needles.");
+  std::string str2 ("needle");
+
+  // different member versions of find in the same order as above:
+  std::size_t found = str.find(str2);
+  if (found!=std::string::npos)
+    std::cout << "first 'needle' found at: " << found << '\n';
+
+  found=str.find("needles are small",found+1,6);
+  if (found!=std::string::npos)
+    std::cout << "second 'needle' found at: " << found << '\n';
+
+  found=str.find("haystack");
+  if (found!=std::string::npos)
+    std::cout << "'haystack' also found at: " << found << '\n';
+
+  found=str.find('.');
+  if (found!=std::string::npos)
+    std::cout << "Period found at: " << found << '\n';
+
+  // let's replace the first needle:
+  str.replace(str.find(str2),str2.length(),"preposition");
+  std::cout << str << '\n';
+
+  return 0;
+}
+ Edit & run on cpp.sh
+
+Notice how parameter pos is used to search for a second instance of the same search string. Output:
+first 'needle' found at: 14
+second 'needle' found at: 44
+'haystack' also found at: 30
+Period found at: 51
+There are two prepositions in this haystack with needles.
+
+
+Complexity
+Unspecified, but generally up to linear in length()-pos times the length of the sequence to match (worst case).
+
+Iterator validity
+No changes.
+
+Data races
+The object is accessed.
+
+Exception safety
+If s does not point to an array long enough, it causes undefined behavior.
+Otherwise, the function never throws exceptions (no-throw guarantee).
+
+See also
+string::rfind	Find last occurrence of content in string (public member function)
+string::find_first_of	Find character in string (public member function)
+string::find_last_of	Find character in string from the end (public member function)
+string::find_first_not_of	Find absence of character in string (public member function)
+string::find_last_not_of	Find non-matching character in string from the end (public member function)
+string::replace	Replace portion of string (public member function)
+string::substr	Generate substring (public member function)
