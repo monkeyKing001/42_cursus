@@ -27,7 +27,9 @@ Fixed:: Fixed(const int integer)
 	this -> value = integer << this -> bits;
 }
 
+//roundf returns the nearst integer as float type
 Fixed:: Fixed(const float flt)
+
 {
 	std::cout << "Float constructor called\n";
 	this->value = roundf(flt * (1 << (this -> bits)));
