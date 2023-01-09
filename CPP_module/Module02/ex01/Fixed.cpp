@@ -21,12 +21,6 @@ Fixed& Fixed::operator = (const Fixed& obj)
 	return (*this);
 }
 
-std::ostream& operator << (std::ostream &out, const Fixed& fixed)
-{
-	out << fixed.toFloat();
-	return (out);
-}
-
 Fixed:: Fixed(const int integer)
 {
 	std::cout << "Int constructor called\n";
@@ -65,3 +59,8 @@ float Fixed::toFloat(void) const
 	return ((float)this->value / (1 << this->bits));
 }
 
+std::ostream& operator << (std::ostream &out, const Fixed& fixed)
+{
+	out << fixed.toFloat();
+	return (out);
+}
