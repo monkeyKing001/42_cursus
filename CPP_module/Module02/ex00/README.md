@@ -13,14 +13,15 @@ A standard class should look like the following code:
 	{
 	   public:
 		  A ();
-		  A (const A &a);
+		  A (const A &a); //copy constructor
 		  ~A ();
-		  A & operator = (const A &a);
+		  A & operator = (const A &a); //copy assignment constructor
 	};
 ```
+
 ### copy constructor vs operator =
-copy constructor execute deep copy whereas operator does shallow copy in heap memory var;
-```
+copy constructor execute deep copy whereas operator `=` does shallow copy in heap memory var;
+```c++
 class Person
 {
 	private :
@@ -48,8 +49,8 @@ cout << B.name; // "another B"
 ```
 
 
-*Q. Why copy constructor take argument as reference? A. to avoid loop construction. Class(Class a) -> Class(Class (Class a)) ...*
-*Q. why operator = return pointer? A. it is because of the C++ convention. C++ assumes right associative. ex) x = y = z = 15 -----> x = (y = ( z = 15 )). it means '= operator' returns left argument's reference  *
+- Q. Why copy constructor take argument as reference? A. to avoid loop construction. Class(Class a) -> Class(Class (Class a)) ...
+- Q. why operator = return pointer? A. it is because of the C++ convention. C++ assumes right associative. ex) x = y = z = 15 -----> x = (y = ( z = 15 )). it means '= operator' returns left argument's reference.
 
 ( https://www.francescmm.com/orthodox-canonical-class-form/ )
 
@@ -72,14 +73,15 @@ On the other hand, a floating-point number representation uses a fixed number of
 
 Here are some examples of floating-point numbers represented in single-precision format (using the notation s eeeeeeee mmmmmmmmmmmmmmmmmmmmmmm to represent the sign, exponent, and mantissa bits, respectively):
 	
-Single-precision value	Decimal value
-bit
-|1|   8	  |   mantissa 23	      |
-0 10000000 00000000000000000000000	+0.0
-0 10000000 00000000000000000000001	+1.17549435e-38
-0 11111111 00000000000000000000000	+infinity
-1 11111111 00000000000000000000000	-infinity
-0 11111111 00000000000000000000001	NaN (not a number)
+- Single-precision value	Decimal value
+
+| 1 |   8	  |    mantissa 23	       |   value  |
+|---|---------|------------------------|----------|
+|0|10000000|00000000000000000000000|	+0.0 |
+|0|10000000|00000000000000000000001| +1.17549435e-38 |
+|0|11111111|00000000000000000000000| +infinity |
+|1|11111111|00000000000000000000000| -infinity |
+|0|11111111|00000000000000000000001| NaN (not a number) |
 
 For example, consider the single-precision floating-point representation defined by the IEEE 754 standard, which uses a 24-bit mantissa. In this case, the mantissa is represented as a binary fraction with 23 bits after the binary point. For example, the mantissa 1010101010101010101010101 represents the binary fraction 1.01010101010101010101010101, which is equivalent to the decimal value 0.5 + 0.125 + 0.0625 + ... + 2^(-23).
 
@@ -103,11 +105,13 @@ Using the above expression, we can calculate the value of this number as follows
 
 ### `#pragma once` vs `#ifndef`
 
-## `#pragma once`
+#### `#pragma once`
+---
 when compiler reads `#pragma once`, it doesn't complier below code lines.
 it works Visual C++ 5.0
 
-## `ifndef`
+#### `ifndef`
+---
 when complier reads `#define ~` it copies `ifndef ~` too. 
 
 for compatibility, `#ifndef` is recommanded

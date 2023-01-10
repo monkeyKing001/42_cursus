@@ -3,7 +3,6 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <type_traits>
 #include <cmath>
 
 class Fixed {

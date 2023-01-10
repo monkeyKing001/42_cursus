@@ -2,7 +2,6 @@
 #define FIXED_HPP
 #include <iostream>
 #include <string>
-#include <type_traits>
 class Fixed {
  private:
 	int					value;
