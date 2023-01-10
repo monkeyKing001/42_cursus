@@ -29,6 +29,7 @@ Fixed:: Fixed(const int integer)
 
 //roundf returns the nearst integer as float type
 //why roundf? float point is not enough to represent point itself.
+//altough flt is less than 0, works well because value is int type
 Fixed:: Fixed(const float flt)
 
 {
