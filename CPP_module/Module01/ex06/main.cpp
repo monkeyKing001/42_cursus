@@ -9,7 +9,6 @@ int	main(int argc, char *argv[])
 	}
 	
 	Harl h;
-
 	h.complain(argv[1]);
 	return (0);
 }

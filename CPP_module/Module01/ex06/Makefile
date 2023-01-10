@@ -24,7 +24,7 @@ BIN_DIR = .
 NAME = $(BIN_DIR)/$(BIN)
 PRINTF = LC_NUMERIC="en_US.UTF-8" printf
 
-BIN = a.out
+BIN = harlFilter
 SRC = main.cpp Harl.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))

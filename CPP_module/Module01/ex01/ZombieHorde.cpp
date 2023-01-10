@@ -10,8 +10,9 @@ Zombie *ZombieHorde(int N, std::string name)
 		std::string n_name;
 		temp << i;
 		idx_str = temp.str();
-		horde[i].set_name(name + "_" + idx_str);
-		std::cout << "Input " << idx_str << "'s name : " << name << std::endl; 
+		n_name = "horde's [" + idx_str + "] " + name;
+		horde[i].set_name(n_name);
+		std::cout << n_name << " is born\n";
 	}
 	return (horde);
 }

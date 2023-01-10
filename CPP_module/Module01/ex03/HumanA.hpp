@@ -11,6 +11,7 @@ class HumanA
 		Weapon &weapon;
 	public:
 		HumanA(std::string name, Weapon &weapon);
+		//HumanA(void);
 
 		//get weapon
 		const Weapon getWeapon() const;

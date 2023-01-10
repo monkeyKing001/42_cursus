@@ -20,15 +20,16 @@ int	main(int argc, char **argv)
 	s1 = argv[2];
 	s2 = argv[3];
 
-	//argment check
-	if (input_file_path.length() == 0 || s1.length() == 0 || s2.length() == 0)
+	//replace argment check
+	if (s1.length() == 0 || s2.length() == 0)
 	{
 		std::cout << "Invalid arguments path or name\n";
 		return (1);
 	}
 	//input file open 
 	ifs.open(input_file_path);
-	if (ifs.fail())
+	//can't manipulate iput_file
+	if (!ifs.good())
 	{
 		std::cout << "Failed to open input file. check the file name or path\n";
 		return (1);
@@ -36,7 +37,7 @@ int	main(int argc, char **argv)
 	//output file open 
 	output_file_path = input_file_path + ".replace";
 	ofs.open(output_file_path);
-	if (ofs.fail())
+	if (!ofs.good())
 	{
 		std::cout << "Failed to open output file. check the file name or path\n";
 		return (1);
@@ -59,6 +60,8 @@ int	main(int argc, char **argv)
 			break;
 		ofs << std::endl;
 	}
+	//close file stream
+	ifs.close();
+	ofs.close();
 	return (0);
 }
-

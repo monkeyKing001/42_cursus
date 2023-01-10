@@ -24,8 +24,8 @@ BIN_DIR = .
 NAME = $(BIN_DIR)/$(BIN)
 PRINTF = LC_NUMERIC="en_US.UTF-8" printf
 
-BIN = zombie
-SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+BIN = a.out
+SRC = main.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 

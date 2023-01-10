@@ -3,15 +3,14 @@
 void	Harl::debug(void)
 {
 	std::cout 
-		<< "I love to get extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. "
-		<<"I just love it!"
+		<< "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!"
 		<< std::endl;
 }
 
 void	Harl::info(void)
 {
-	std::cout << "I cannot believe adding extra bacon cost more money. "
-		<< "You don’t put enough! If you did I would not have to ask for it!" 
+	std::cout
+		<< "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!"
 		<< std::endl;
 }
 

@@ -1,6 +1,10 @@
 #include "HumanA.hpp"
+//HumanA::HumanA(void)
+//{
+//	this -> name = "none";
+//}
 
-//initializer list
+//initializer list it's weapon is declared by ref so, unnullable
 HumanA::HumanA(std::string name, Weapon &weapon) : name(name), weapon(weapon)
 {
 }
