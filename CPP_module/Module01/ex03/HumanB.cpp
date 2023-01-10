@@ -12,7 +12,7 @@ void HumanB::setWeapon(Weapon &weapon) { this -> weapon = &weapon; }
 //mem func
 void HumanB::attack()
 {
-	std::cout << getName() << " attacks with " << getWeapon() -> getType() << std::endl;
+	std::cout << getName() << " attacks with their " << getWeapon() -> getType() << std::endl;
 }
 
 HumanB::~HumanB(){}

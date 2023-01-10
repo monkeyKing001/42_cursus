@@ -14,7 +14,7 @@ const std::string HumanA::getName() const { return (this -> name); }
 const Weapon HumanA::getWeapon() const { return (this -> weapon); }
 void HumanA::attack()
 {
-	std::cout << getName() << " attacks with " << getWeapon().getType() << std::endl;
+	std::cout << getName() << " attacks with their " << getWeapon().getType() << std::endl;
 }
 
 HumanA::~HumanA(){}
