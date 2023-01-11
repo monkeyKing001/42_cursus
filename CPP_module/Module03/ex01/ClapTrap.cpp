@@ -86,3 +86,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 					<< "\n";
 	}
 }
+
+unsigned int ClapTrap::getAttack(void) const
+{
+	return (this -> Attack);
+}

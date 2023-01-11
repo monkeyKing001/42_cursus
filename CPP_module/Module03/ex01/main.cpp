@@ -3,7 +3,6 @@
 int	main(void)
 {
 	ClapTrap a("A");
-	ClapTrap b("B");
 
 	ScavTrap DefaultScav;
 	ScavTrap sa("ScavTrap1");
@@ -11,14 +10,18 @@ int	main(void)
 	ScavTrap sc(sa);
 	ScavTrap sd = sb;
 
-	a.attack("B");
-	b.beRepaired(3);
-	b.attack("A");
-	a.beRepaired(10);
+	//ScavTrap attack
+	sa.attack("ScavTrap2");
+	//ClapTrap takeDamage, repaired
+	sb.takeDamage(sa.getAttack());
+	sb.beRepaired(10);
+	//ScavTrap guardGate
+	sa.guardGate();
+	sb.guardGate();
+
+	//sc, sd
 	DefaultScav.attack("sa");
 	sa.attack("a");
 	sb.attack("b");
-	sa.guardGate();
-	sb.guardGate();
 	return (0);
 }

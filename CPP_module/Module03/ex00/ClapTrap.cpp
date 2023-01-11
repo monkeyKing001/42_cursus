@@ -83,6 +83,10 @@ void ClapTrap::beRepaired(unsigned int amount)
 		this->Energy--;
 		std::cout	<< "ClapTrap " << this->name << " has repaired itself by " 
 					<< amount << " Hit points. Its Hit points are now " << this->Hit 
-					<< "\n";
+					<< " and Energy is " << this -> Energy <<"\n";
 	}
+}
+unsigned int ClapTrap::getAttack(void) const
+{
+	return (this -> Attack);
 }
