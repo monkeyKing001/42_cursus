@@ -33,8 +33,15 @@ class Fixed {
 	Fixed operator/(const Fixed& f);
 
 	//increment/decrement arithmetic operations
+	//pre arithmetic operations
+	//to declare prefix no arguments.
+	//returns lvalue
 	Fixed& operator++(void);
 	Fixed& operator--(void);
+
+	//post arithmetic operations
+	//returns rvalue
+	//to declare postfix any arguments.
 	const Fixed operator++(int);
 	const Fixed operator--(int);
 

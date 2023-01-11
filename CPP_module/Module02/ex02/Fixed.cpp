@@ -1,19 +1,19 @@
 #include "Fixed.hpp"
 Fixed::Fixed(void) 
 {
-	std::cout << "Default constructor called\n";
+//	std::cout << "Default constructor called\n";
 	this->value = 0;
 }
 
 Fixed::Fixed(const Fixed& fixed)
 {
-	std::cout << "Copy constructor called\n";
+//	std::cout << "Copy constructor called\n";
 	setRawBits(fixed.getRawBits());
 }
 
 Fixed& Fixed::operator = (const Fixed& obj)
 {
-	std::cout << "Copy assignment operator called\n";
+//	std::cout << "Copy assignment operator called\n";
 	if (this != &obj)
 	{
 		setRawBits(obj.getRawBits());
@@ -29,13 +29,13 @@ std::ostream& operator << (std::ostream &out, const Fixed& fixed)
 
 Fixed:: Fixed(const int integer)
 {
-	std::cout << "Int constructor called\n";
+//	std::cout << "Int constructor called\n";
 	this -> value = integer << this -> bits;
 }
 
 Fixed:: Fixed(const float flt)
 {
-	std::cout << "Float constructor called\n";
+//	std::cout << "Float constructor called\n";
 	this->value = roundf(flt * (1 << (this -> bits)));
 }
 //######################################################################
@@ -118,12 +118,14 @@ const Fixed	Fixed::operator++(int)
 	return (ret);
 }
 
+//pre
 Fixed&	Fixed::operator--(void)
 {
 	this->value--;
 	return (*this);
 }
 
+//post
 const Fixed	Fixed::operator--(int)
 {
 	const Fixed	ret(*this);
@@ -131,6 +133,36 @@ const Fixed	Fixed::operator--(int)
 	this->value--;
 	return (ret);
 }
+//pre
+//Fixed&	Fixed::operator++(int)
+//{
+//	this->value++;
+//	return (*this);
+//}
+////post
+//const Fixed	Fixed::operator++(void)
+//{
+//	const Fixed	ret(*this);
+//
+//	this->value++;
+//	return (ret);
+//}
+//
+////pre
+//Fixed&	Fixed::operator--(int)
+//{
+//	this->value--;
+//	return (*this);
+//}
+//
+////post
+//const Fixed	Fixed::operator--(void)
+//{
+//	const Fixed	ret(*this);
+//
+//	this->value--;
+//	return (ret);
+//}
 //######################################################################
 //#############         Oveloading min/max func         #################
 //######################################################################
@@ -180,7 +212,7 @@ void Fixed::setRawBits(int const value)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called\n";
+//	std::cout << "Destructor called\n";
 }
 
 int Fixed::toInt(void) const
