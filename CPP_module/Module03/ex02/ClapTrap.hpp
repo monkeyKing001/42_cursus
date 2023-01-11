@@ -25,7 +25,7 @@ class ClapTrap
 		virtual void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-		unsigned int getDamege(void) const;
+		unsigned int getAttack(void) const;
 
 };
 #endif /* CLAPTRAP_H */

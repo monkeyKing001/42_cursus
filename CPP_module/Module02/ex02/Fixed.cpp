@@ -167,7 +167,7 @@ const Fixed	Fixed::operator--(int)
 //#############         Oveloading min/max func         #################
 //######################################################################
 
-const Fixed&	Fixed::min(Fixed &ref1, Fixed &ref2)
+Fixed&	Fixed::min(Fixed &ref1, Fixed &ref2)
 {
 	if (ref1 <= ref2)
 		return ref1;
@@ -183,7 +183,7 @@ const Fixed& Fixed::min(Fixed const &ref1, Fixed const &ref2)
 		return ref2;
 }
 
-const Fixed&	Fixed::max(Fixed &ref1, Fixed &ref2)
+Fixed&	Fixed::max(Fixed &ref1, Fixed &ref2)
 {
 	if (ref1 >= ref2)
 		return ref1;

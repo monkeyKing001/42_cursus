@@ -5,7 +5,7 @@ ClapTrap::ClapTrap(void)
 	this->Attack = 0;
 	this->Hit = 10;
 	this->Energy = 10;
-	std::cout << "Called ClapTrap default constructor\n";
+	std::cout << "ClapTrap ( " << name << " ) constructed by default\n";
 }
 
 ClapTrap::ClapTrap(std::string name) 

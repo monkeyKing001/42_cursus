@@ -2,13 +2,13 @@
 #define SCAVTRAP_H
 #include "ClapTrap.hpp"
 #include <iostream>
+#include <sstream>
 #include <string>
 
-class ScavTrap : public  ClapTrap
+class ScavTrap : public ClapTrap
 {
 
 	private:
-		
 
 	public:
 		ScavTrap(void);

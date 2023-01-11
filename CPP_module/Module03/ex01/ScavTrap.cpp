@@ -6,7 +6,7 @@ ScavTrap::ScavTrap(void)
 	this->Energy = 50;
 	this->Attack = 20;
 
-	std::cout << "Called ScavTrap default constructor\n";
+	std::cout << "ScavTrap ( " << name << " ) constructed by defualt\n";
 }
 
 ScavTrap::ScavTrap(std::string name)

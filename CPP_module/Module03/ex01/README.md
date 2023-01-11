@@ -99,7 +99,8 @@ The protected keyword is often used in inheritance to allow derived classes to a
 
 ### `private` vs `protected`
 ---
-In C++, the private and protected keywords are used to specify the member visibility of a class. Members of a class that are declared private are only accessible from within the class itself, while members of a class that are declared protected are accessible from within the class itself and from derived classes.
+In C++, the private and protected keywords are used to specify the member visibility of a class. Members of a class that are declared private are only accessible from within the class itself, while members of a class that are declared protected are accessible from within the class itself and from derived classes. However, access to the variable is allowed only for the class and its derived classes, not for other instances of other classes.
+
 ```c++
 class Base {
 private:
@@ -172,6 +173,11 @@ In this example, the Base class has a virtual function foo, and the Derived clas
 
 The virtual keyword is also used to specify that a destructor is virtual. A virtual destructor ensures that the correct destructor is called when an object of a derived class is deleted through a pointer to the base class.
 
+This mechanism is achieved by using a mechanism called virtual function table or vtable, it's a table of function pointers. Each class that has virtual function(s) has a vtable, and it's used to look up the correct implementation of a virtual function at runtime.
+
+When a virtual function is called through a pointer or a reference to the base class, the runtime system looks up the vtable associated with the object's type to find the correct implementation of the function to call.
+
+This allows for runtime polymorphism, where an object's behavior can be determined at runtime based on its actual type, rather than its declared type.
 </div>
 </details>
 

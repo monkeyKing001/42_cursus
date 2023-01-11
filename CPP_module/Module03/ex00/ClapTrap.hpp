@@ -18,7 +18,7 @@ class ClapTrap
 		ClapTrap(void);
 		ClapTrap(std::string);
 		ClapTrap(const ClapTrap& obj);
-		ClapTrap& operator = (const ClapTrap& obj);
+		ClapTrap& operator=(const ClapTrap& obj);
 		~ClapTrap(void);
 
 		//mem func

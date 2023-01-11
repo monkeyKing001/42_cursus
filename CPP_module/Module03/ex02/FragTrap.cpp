@@ -6,7 +6,7 @@ FragTrap::FragTrap(void)
 	this->Hit = 100;
 	this->Energy = 100;
 	
-	std::cout << "Called FragTrap default constructor\n";
+	std::cout << "FragTrap ( " << name << " ) has been constructed by default\n";
 }
 
 FragTrap::FragTrap(const FragTrap& obj) 

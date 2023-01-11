@@ -4,14 +4,16 @@ int	main(void)
 	ClapTrap a("A");
 	ClapTrap b("B");
 	ClapTrap c(a);
-	ClapTrap d = b;
+	//ClapTrap d = b;
+	ClapTrap d;
 
+	d = b;
 	a.attack("B");
 	b.takeDamage(a.getAttack());
 	b.beRepaired(3);
 	b.attack("A");
 	a.takeDamage(b.getAttack());
-	a.beRepaired(10);
+	b.beRepaired(10);
 
 	for (int i = 0; i < 20; i++)
 	{
@@ -31,6 +33,5 @@ int	main(void)
 		d.attack("C");
 		c.takeDamage(d.getAttack());
 	}
-
 	return (0);
 }
