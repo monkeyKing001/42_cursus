@@ -2,7 +2,7 @@
 #define WRONGCAT_H
 #include "WrongAnimal.hpp"
 
-#define WC_NAME           "WrongCat"
+#define WRONG_CAT "WRONG_CAT"
 
 class WrongCat : public WrongAnimal {
 	public:

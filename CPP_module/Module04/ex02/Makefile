@@ -25,7 +25,7 @@ NAME = $(BIN_DIR)/$(BIN)
 PRINTF = LC_NUMERIC="en_US.UTF-8" printf
 
 BIN = a.out
-SRC = main.cpp Harl.cpp
+SRC = main.cpp Cat.cpp Dog.cpp Animal.cpp Brain.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 

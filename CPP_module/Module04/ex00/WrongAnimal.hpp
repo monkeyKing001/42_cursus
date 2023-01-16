@@ -4,8 +4,7 @@
 #include <iostream>
 #include <string>
 
-#define W_SIZE            12
-#define WA_NAME           "WrongAnimal"
+#define WRONG_ANIMAL "WRONG_ANIMAL"
 
 class WrongAnimal {
 	protected:

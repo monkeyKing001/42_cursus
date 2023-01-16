@@ -1,4 +1,5 @@
 #include "Animal.hpp"
+#include "Brain.hpp"
 #include <iostream>
 
 void Animal::setType(const std::string& type)
@@ -19,7 +20,19 @@ void Animal::makeSound(void) const
 Animal& Animal::operator=(const Animal& a)
 {
 	if (this != &a)
-		_type = a.getType();
+	{
+		this -> _type = a.getType();
+//		if (this -> brain)
+//		{
+//			delete (this -> brain -> ideas);
+//			delete (this -> brain);
+//		}
+//		this -> brain = new Brain();
+//		for (int i = 0; i < IDEA_NUM; i++)
+//		{
+//			this -> brain -> setIdea(i, a.brain->getIdea(i));
+//		}
+	}
 	std::cout
 		<< "Animal "
 		<< "Copy Assignment Constructor Called\n";
