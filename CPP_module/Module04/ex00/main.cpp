@@ -18,6 +18,7 @@ int main()
 	Animal* anim = new Animal();
 	Dog *static_down_casting = static_cast<Dog*>(anim);
 	static_down_casting -> makeSound();
+	Dog *dw_cst_dog = static_cast<Dog *>(const_cast<Animal *> (j));
 	//const Cat* dc = new Animal();
 	//const Dog* dd = new Animal();
 	//Dog *dg_dwn = dynamic_cast< const_cast< <Dog*>(i) > >(i);
@@ -33,6 +34,7 @@ int main()
 	meta->makeSound();
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
+	dw_cst_dog -> makeSound();
 
 //	std::cout << "\n===============     overiding test after downacasting     ===============\n";
 //	//Animal *del_cnst = const_cast<Animal *>(i);
