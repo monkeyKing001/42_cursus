@@ -18,7 +18,6 @@ int main()
 	Animal* anim = new Animal();
 	Dog *static_down_casting = static_cast<Dog*>(anim);
 	static_down_casting -> makeSound();
-	Dog *dw_cst_dog = static_cast<Dog *>(const_cast<Animal *> (j));
 	//const Cat* dc = new Animal();
 	//const Dog* dd = new Animal();
 	//Dog *dg_dwn = dynamic_cast< const_cast< <Dog*>(i) > >(i);
@@ -32,9 +31,10 @@ int main()
 
 	std::cout << "\n===============       makeSound test       ===============\n";
 	meta->makeSound();
+	Dog *dw_cst_dog = static_cast<Dog *>(const_cast<Animal *> (j));
+	dw_cst_dog -> makeSound();
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
-	dw_cst_dog -> makeSound();
 
 //	std::cout << "\n===============     overiding test after downacasting     ===============\n";
 //	//Animal *del_cnst = const_cast<Animal *>(i);
@@ -59,15 +59,21 @@ int main()
 	std::cout << "\n===============       Make No Virtual Keyword Tests work!       ===============\n";
 	WrongAnimal *dn_cst = const_cast<WrongAnimal *>(wa);
 	WrongCat *dn_cat = static_cast<WrongCat *>(dn_cst);
-	dn_cat->makeSound();
+	dn_cat -> makeSound();
 
 	std::cout << "\n===============       destruction test       ===============\n";
 	delete meta;
+	meta = NULL;
 	delete i;
+	i = NULL;
 	delete j;
+	j = NULL;
 	delete wa;
+	wa = NULL;
 	delete wc;
+	wc = NULL;
 	delete anim;
+	anim = NULL;
 //	delete static_down_casting;
 //	delete dg_dwn_del_cnst;
 

@@ -110,6 +110,5 @@ int main() {
 	android_dog = NULL;
 	delete android_dog2;
 	android_dog2 = NULL;
-	//system("leaks -atExit -- ./a.out");
 	return 0;
 }

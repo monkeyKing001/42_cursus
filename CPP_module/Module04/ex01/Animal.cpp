@@ -20,19 +20,7 @@ void Animal::makeSound(void) const
 Animal& Animal::operator=(const Animal& a)
 {
 	if (this != &a)
-	{
 		this -> _type = a.getType();
-//		if (this -> brain)
-//		{
-//			delete (this -> brain -> ideas);
-//			delete (this -> brain);
-//		}
-//		this -> brain = new Brain();
-//		for (int i = 0; i < IDEA_NUM; i++)
-//		{
-//			this -> brain -> setIdea(i, a.brain->getIdea(i));
-//		}
-	}
 	std::cout
 		<< "Animal "
 		<< "Copy Assignment Constructor Called\n";

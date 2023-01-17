@@ -1,8 +1,6 @@
 #include "Cat.hpp"
 void Cat::setBrain(const Brain &b)
 {
-//	if (!this -> brain)
-//		this -> brain = new Brain();
 	delete (this -> brain);
 	this -> brain = new Brain();
 	*(this -> brain) = b;

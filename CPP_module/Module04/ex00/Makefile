@@ -17,7 +17,7 @@ UNAME = $(shell uname -s)
 CFLAGS = -Wall -Wextra -Werror
 CDEBUG = -g -fsanitize=address -std=c++98
 RM = rm -f
-CC = g++
+CC = c++
 SRC_DIR = .
 OBJ_DIR = .
 BIN_DIR = .
