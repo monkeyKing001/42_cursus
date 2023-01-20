@@ -45,6 +45,5 @@ int main(void)
 			delete rrf;
 		}
     }
-
 	return (0);
 }

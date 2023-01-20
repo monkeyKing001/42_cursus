@@ -24,6 +24,10 @@ class Intern
 
 		//make form
 		AForm* makeForm(const std::string &name, const std::string &target);
+		void paperWork(const std::string &name, const std::string &target);
+		AForm* createPresidentialPardonForm(const std::string target);
+		AForm* createShrubberyForm(const std::string target);
+		AForm* createRobotomyRequestForm(const std::string target);
 
 		//throw exception
 		class NoFormTypeException : public std::exception
