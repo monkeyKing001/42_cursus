@@ -90,6 +90,14 @@ Inside the bar function, the Derived class has access to the protected member va
 
 The protected keyword is often used in inheritance to allow derived classes to access the protected members of their base classes. This can be useful when you want to hide the implementation details of a class from the outside world, but still allow derived classes to access and modify certain members of the base class.
 
+- inherit as public => no change is access keyword.
+base class :  private / public /protected ->  derived class : private / public / protecte.
+
+- inherit as private => all member access keyword become private.
+
+- inherit as protected => `public` access becomes `protected`.
+base :  private / public / protected -> derived : private / protected / protected 가 된다.
+
 </div>
 </details>
 

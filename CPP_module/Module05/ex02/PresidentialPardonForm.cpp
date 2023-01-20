@@ -31,6 +31,6 @@ const std::string PresidentialPardonForm::getTarget(void) const
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
 	executable(executor);
-	std::cout << GREEN<< this -> getTarget() << " has been pardoned by Zaphod Beeblebrox." << DEFAULT <<"\n";
+	std::cout << GREEN << "and <" << this -> getTarget() << "> has been pardoned by Zaphod Beeblebrox." << DEFAULT <<"\n";
 }
 
