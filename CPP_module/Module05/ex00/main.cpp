@@ -13,6 +13,16 @@ int main()
 		{
 			std::cerr << e.what() << '\n';
 		}
+		try
+		{
+		std::cout << "\n==================   Construction Test( Catch exception )   ===================\n";
+			Bureaucrat test("over MAX", 0);	
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+
 		std::cout << "\n==================   Construction Test( Working well )   ===================\n";
 		
 		Bureaucrat a("a", 150);
@@ -34,10 +44,26 @@ int main()
 		b.decrementGrade();
 		std::cout << a << std::endl;
 		std::cout << b << std::endl;
+
+		std::cout << "\n==================   Incre, Decre Test( try catch )   ===================\n";
+		try
+		{
+			b.incrementGrade();
+			std::cout << b << std::endl;
+			b.incrementGrade();
+			std::cout << b << std::endl;
+			b.incrementGrade();
+			std::cout << b << std::endl;
+		}
+		catch(std::exception &e)
+		{
+			std::cout << e.what() << '\n';
+		}
+
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << '\n';
 	}
 	
 	return (0);
