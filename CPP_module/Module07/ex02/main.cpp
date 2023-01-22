@@ -1,118 +1,133 @@
+//#include <iostream>
+//#include "Array.hpp"
+//
+//#define MAX_VAL 750
+//int main(int, char**)
+//{
+//    Array<int> numbers(MAX_VAL);
+//    int* mirror = new int[MAX_VAL];
+//    srand(time(NULL));
+//    for (int i = 0; i < MAX_VAL; i++)
+//    {
+//        const int value = rand();
+//        numbers[i] = value;
+//        mirror[i] = value;
+//    }
+//    //SCOPE
+//    {
+//        Array<int> tmp = numbers;
+//        Array<int> test(tmp);
+//    }
+//
+//    for (int i = 0; i < MAX_VAL; i++)
+//    {
+//        if (mirror[i] != numbers[i])
+//        {
+//            std::cerr << "didn't save the same value!!" << std::endl;
+//            return 1;
+//        }
+//    }
+//    try
+//    {
+//        numbers[-2] = 0;
+//    }
+//    catch(const std::exception& e)
+//    {
+//        std::cerr << e.what() << '\n';
+//    }
+//    try
+//    {
+//        numbers[MAX_VAL] = 0;
+//    }
+//    catch(const std::exception& e)
+//    {
+//        std::cerr << e.what() << '\n';
+//    }
+//
+//    for (int i = 0; i < MAX_VAL; i++)
+//    {
+//        numbers[i] = rand();
+//    }
+//    delete [] mirror;//
+//    return 0;
+//}
 #include <iostream>
+#include <limits>
 #include "Array.hpp"
-
-// #define MAX_VAL 750
-
-// int main(int, char**)
-// {
-//     Array<int> numbers(MAX_VAL);
-//     int* mirror = new int[MAX_VAL];
-//     srand(time(NULL));
-
-// /*
-//     std::cout << "numbers : ";
-//     for (int i = 0; i < 10; i++)
-//     {
-//         std::cout << numbers[i] << " ";
-//     }
-//     std::cout << std::endl;
-
-//     std::cout << "mirrors : ";
-//     for (int i = 0; i < 10; i++)
-//     {
-//         std::cout << mirror[i] << " ";
-//     }
-//     std::cout << std::endl;
-// */
-
-//     for (int i = 0; i < MAX_VAL; i++)
-//     {
-//         const int value = rand();
-//         numbers[i] = value;
-//         mirror[i] = value;
-//     }
-
-//     std::cerr << " ----------- here 1 -----------------\n";
-//     for (int i = 0; i < MAX_VAL; i++)
-//     {
-//         if (mirror[i] != numbers[i])
-//         {
-//             std::cerr << "didn't save the same value!!" << std::endl;
-//             return 1;
-//         }
-//     }
-// /*
-//     std::cout << "numbers : ";
-//     for (int i = 0; i < 10; i++)
-//     {
-//         std::cout << numbers[i] << " ";
-//     }
-//     std::cout << std::endl;
-
-//     std::cout << "mirrors : ";
-//     for (int i = 0; i < 10; i++)
-//     {
-//         std::cout << mirror[i] << " ";
-//     }
-//     std::cout << std::endl;
-// */
-
-//     std::cerr << " ----------- here 2 -----------------\n";
-//     try
-//     {
-//         numbers[-2] = 0;
-//     }
-//     catch(const std::exception& e)
-//     {
-//         std::cerr << e.what() << '\n';
-//     }
-//     std::cerr << " ----------- here 3 -----------------\n";
-//     try
-//     {
-//         numbers[MAX_VAL] = 0;
-//     }
-//     catch(const std::exception& e)
-//     {
-//         std::cerr << e.what() << '\n';
-//     }
-//     std::cerr << " ----------- here 4 -----------------\n";
-//     delete [] mirror;//
-//     return 0;
-// }
-
 
 #define SIZE 10
 
 int main( void )
 {
-    std::cout << "-----------------------------------------------------" << std::endl;
+    std::cout << "--------------------------------------        TEST START         ----------------------------------" << "\n";
 
+    std::cout << YELLOW << "\n######     CONSTURCTION  TEST     ######" << "\n" << DEFAULT;
+	Array< int > defIntArr;
     Array< int > intArray( SIZE );
-    Array< int > intArray2( SIZE - 5 );
-
     for ( unsigned int i = 0; i < intArray.size(); i++ )
         intArray[i] = i * 2;
+	defIntArr = intArray;
+	Array< int > copyArr(defIntArr);
 
-    std::cout << "Int Array 1 size: " << intArray.size() << std::endl;
-    std::cout << "Int Array 1: " << intArray << std::endl;
+	std::cout << "intArray : \t" << intArray << "\n";
+	std::cout << "defIntArr : \t" << defIntArr << "\n";
+	std::cout << "copyArr : \t" << copyArr << "\n";
+
+
+	std::cout << YELLOW << "\n######      DEEP COPY TEST     #########\n" << DEFAULT;
+    for ( unsigned int i = 0; i < intArray.size(); i++ )
+        intArray[i] = i * 3;
+	std::cout << "intArray : \t" << intArray << "\n";
+	std::cout << "defIntArr : \t" << defIntArr << "\n";
+	std::cout << "copyArr : \t" << copyArr << "\n";
+
+
+	std::cout << YELLOW << "\n######     [] operator test    #########\n" << DEFAULT;
 	std::cout << "intArray[0] : "<<intArray[0] << "\n";
-	std::cout << "intArray[4294967297] : "<<intArray[4294967297] << "\n";
+	std::cout << "intArray[2] : "<<intArray[2] << "\n";
+	std::cout << "intArray[9] : "<<intArray[9] << "\n";
 
-    std::cout << std::endl;
-    intArray2 = intArray;
+    std::cout << "defIntArr[0]: " << defIntArr[0] << "\n";
+    std::cout << "defIntArr[1]: " << defIntArr[1] << "\n";
+    std::cout << "defIntArr[5]: " << defIntArr[5] << "\n";
 
-    std::cout << "Int Array 2 size: " << intArray2.size() << std::endl;
-    std::cout << "int Array 2: " << intArray2 << std::endl;
-    std::cout << std::endl;
-
+	std::cout << YELLOW << "\n######     unvailed index test    #########\n" << DEFAULT;
     try {
-        std::cout << "Accessing a valid index: " << intArray[5] << std::endl;
-        std::cout << "Accessing an invalid index: " << intArray[SIZE] << std::endl;
+		std::cout << "intArray[-1] : "<< intArray[-1] << "\n";
     } catch ( Array< int >::OutOfBoundsException& e ) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << RED << "Error: " << e.what() << DEFAULT << "\n";
     }
-
-    std::cout << "-----------------------------------------------------" << std::endl;
+    try {
+		std::cout << "intArray[-2] : "<< intArray[-2] << "\n";
+    } catch ( Array< int >::OutOfBoundsException& e ) {
+        std::cout << RED << "Error: " << e.what() << DEFAULT << "\n";
+    }
+    try {
+		std::cout << "intArray[10] : "<< intArray[10] << "\n";
+    } catch ( Array< int >::OutOfBoundsException& e ) {
+        std::cout << RED << "Error: " << e.what() << DEFAULT << "\n";
+    }
+    try {
+		std::cout << "UINT_MAX     : " << UINT_MAX  << "\n";
+		std::cout << "UINT_MAX + 3 : " << UINT_MAX + 3 << "\n";
+		std::cout << "intArray[UINT_MAX + 3] : "<< intArray[UINT_MAX + 3] << "\n";
+    } catch ( Array< int >::OutOfBoundsException& e ) {
+        std::cout << RED << "Error: " << e.what() << DEFAULT << "\n";
+    }
+//    try {
+//		std::cout << "intArray[-1 - 4294967295] : "<< intArray[-1 - 4294967295]<< "\n";
+//    } catch ( Array< int >::OutOfBoundsException& e ) {
+//        std::cout << RED << "Error: " << e.what() << DEFAULT << "\n";
+//    }
+//    try {
+//		std::cout << "-1 as unsigned int     : " << (unsigned int)-1  << "\n";
+//		std::cout << "-1 as int     : " << (int)-1  << "\n";
+//		std::cout << "UINT_MAX + 3 : " << UINT_MAX + 3 << "\n";
+//		std::cout << "intArray[UINT_MAX + 3] : "<< intArray[UINT_MAX + 3] << "\n";
+//    } catch ( Array< int >::OutOfBoundsException& e ) {
+//        std::cout << RED << "Error: " << e.what() << DEFAULT << "\n";
+//    }
+    std::cout << "--------------------------           END OF TEST             -----------------------------------" << "\n";
 
     return ( 0 );
 }
