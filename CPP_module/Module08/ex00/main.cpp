@@ -18,6 +18,7 @@ int main( int ac, char ** av )
     int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     std::vector< int >  vect( arr, arr + sizeof( arr ) / sizeof( int ) );
     std::list< int >    list( arr, arr + sizeof( arr ) / sizeof( int ) );
+	//std::cout << list[3] << "\n"
 
     easyfind( vect, std::atoi( av[1] ));
     easyfind( list, std::atoi( av[1] ));

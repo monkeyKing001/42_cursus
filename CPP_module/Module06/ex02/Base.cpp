@@ -45,7 +45,6 @@ void    identify( Base& p ) {
 	}
 	try {
 		C& c = dynamic_cast< C& >( p );
-		std::cout << "reference p is acutally C\n";
 		std::cout << GREEN <<"reference p is acutally C\n" << DEFAULT;
 		(void)c;
 	} catch(const std::exception& e) 

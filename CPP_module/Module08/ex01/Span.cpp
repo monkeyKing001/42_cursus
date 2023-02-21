@@ -35,16 +35,18 @@ const std::list< int >* Span::getList( void ) const {
 
 unsigned int    Span::longestSpan( void ) const {
     if ( _list.size() < 2 )
-        throw std::out_of_range("Span::longestSpan: list is empty");
+        throw std::out_of_range("Span::longestSpan: cannot find longest span because of size()");
     return ( *std::max_element( _list.begin(), _list.end() ) - *std::min_element( _list.begin(), _list.end() ) );
 }
 
 unsigned int Span::shortestSpan( void ) const {
     if ( _list.size() < 2 )
-        throw std::out_of_range("Span::shortestSpan: list is empty");
+        throw std::out_of_range("Span::ShortestSpan: cannot find longest span because of size()");
     unsigned int  min = Span::longestSpan();
     for ( std::list<int>::const_iterator it = _list.begin(); it != _list.end(); it++ ) {
-        for ( std::list<int>::const_iterator it2 = _list.begin(); it2 != _list.end(); it2++ ) {
+//        for ( std::list<int>::const_iterator it2 = _list.begin(); it2 != _list.end(); it2++ ) {
+        for ( std::list<int>::const_iterator it2 = it; it2 != _list.end(); it2++ )
+		{
             if ( it == it2 ) continue;
             if ( std::abs( *it2 - *it ) <  static_cast< int >( min ) )
                 min = std::abs( *it2 - *it );
