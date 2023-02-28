@@ -1,7 +1,7 @@
 #!/bin/bash
 # basic complining and testing
 
-gcc -Wextra -Werror -Wall microshell_full.c -o minishell
+gcc -Wextra -Werror -Wall myself.c -o minishell
 
 ./minishell cd a b c d e
 ./minishell cd x
