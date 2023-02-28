@@ -38,7 +38,7 @@ AForm* Intern::makeForm(const std::string& name, const std::string& target)
 			if (types[i] == name)
 			{
 				paperWork(name, target);
-				AForm *form = (this ->*f[i])(target);
+				AForm *form = (this ->* f[i])(target);
 				return (form);
 			}
 		}
