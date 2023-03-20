@@ -26,8 +26,10 @@ static int exec(char **argv, char **envp, int i) {
 	int pid = fork();
 	if (!pid) {
 		argv[i] = 0;
+		//0 fd becomes fd. -> read from fd
 		if (dup2(fd, 0) == -1 || close(fd) == -1)
 			return (perr("error: fatal\n"), 1);
+		//1 fd becomds fds. write to fds
 		if (pip && (dup2(fds[1], 1) == -1 || close(fds[0]) == -1 || close(fds[1]) == -1))
 			return (perr("error: fatal\n"), 1);
 		execve(*argv, argv, envp);
@@ -36,6 +38,7 @@ static int exec(char **argv, char **envp, int i) {
 	waitpid(pid, &status, 0);
 	if (!pip && dup2(0, fd) == -1)
 		return (perr("error: fatal\n"), 1);
+	//fds to fd.
 	if (pip && (dup2(fds[0], fd) == -1 || close(fds[0]) == -1 || close(fds[1]) == -1))
 		return (perr("error: fatal\n"), 1);
 	return WIFEXITED(status) && WEXITSTATUS(status);
@@ -56,7 +59,9 @@ int main(int argc, char **argv, char **envp) {
 			status = exec(argv, envp, i);
 		argv += i;
 	}
+	//fd becomes 0
 	if (dup2(0, fd) == -1)
 		perr("error: fatal\n");
+	close(fd);
 	return (status);
 }

@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 		std::cout << "Invalid arguments path or name\n";
 		return (1);
 	}
-	//input file open 
+	//input file open.
 	ifs.open(input_file_path);
 	//can't manipulate iput_file
 	if (!ifs.good())

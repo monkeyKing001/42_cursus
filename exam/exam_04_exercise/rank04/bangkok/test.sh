@@ -1,12 +1,14 @@
 #!/bin/bash
 # basic complining and testing
 
-gcc -Wextra -Werror -Wall minishell.c -o minishell
+#src=microshell.c
+src=myself.c
+gcc -Wextra -Werror -Wall ${src} -o microshell
 
-./minishell cd a b c d e
-./minishell cd x
-./minishell cd ..
-./minishell x
-./minishell /bin/echo x
-./minishell /bin/echo y ; /bin/ls | /usr/bin/wc -l
-./minishell /bin/sleep 3 | /bin/sleep 3 | /bin/sleep 3 | /bin/sleep 3
+./microshell cd a b c d e
+./microshell cd x
+./microshell cd ..
+./microshell x
+./microshell /bin/echo x
+./microshell /bin/echo y ; /bin/ls | /usr/bin/wc -l
+./microshell /bin/sleep 3 | /bin/sleep 3 | /bin/sleep 3 | /bin/sleep 3
